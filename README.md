@@ -27,6 +27,9 @@ agent-skills/
 ├── paper-polish/            # Academic Paper Polish (LaTeX)
 │   ├── SKILL.md             # 6 modular workflows
 │   └── references/          # Pattern catalogs & checklists
+├── project-analyzer/        # Codebase Analysis & Onboarding
+│   ├── SKILL.md             # 8 modular workflows
+│   └── references/          # Checklists, pattern catalog & report template
 └── [other-skills]/          # Extension Point
 ```
 
@@ -36,6 +39,7 @@ agent-skills/
 |---------|-------------|-----|---------|
 | [glm-skills](./glm-skills/) | GLM AI capabilities collection | z-ai-web-dev-sdk | 12 |
 | [paper-polish](./paper-polish/) | Academic LaTeX paper improvement workflows | - | 6 |
+| [project-analyzer](./project-analyzer/) | Codebase analysis & developer onboarding | - | 8 |
 
 ## Skill Categories
 
@@ -65,6 +69,9 @@ agent-skills/
 
 ### Academic Writing
 - **paper-polish**: Automated LaTeX paper improvement (de-AI polishing, citation expansion, figure/table verification, compilation cleanup, full quality review)
+
+### Developer Tools
+- **project-analyzer**: Systematic codebase analysis for project takeover and onboarding (tech stack, structure, architecture, dependencies, code quality, dev workflow, risk assessment, comprehensive report)
 
 ## Quick Start
 
