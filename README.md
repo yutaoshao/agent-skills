@@ -24,6 +24,9 @@ agent-skills/
 │   ├── canvas-design/       # Canvas Design
 │   ├── frontend-design/     # Frontend Design System
 │   └── document-skills/     # Document Processing (docx/xlsx/pptx/pdf)
+├── paper-polish/            # Academic Paper Polish (LaTeX)
+│   ├── SKILL.md             # 6 modular workflows
+│   └── references/          # Pattern catalogs & checklists
 └── [other-skills]/          # Extension Point
 ```
 
@@ -32,6 +35,7 @@ agent-skills/
 | Library | Description | SDK | Modules |
 |---------|-------------|-----|---------|
 | [glm-skills](./glm-skills/) | GLM AI capabilities collection | z-ai-web-dev-sdk | 12 |
+| [paper-polish](./paper-polish/) | Academic LaTeX paper improvement workflows | - | 6 |
 
 ## Skill Categories
 
@@ -58,6 +62,9 @@ agent-skills/
 ### Design System
 - **canvas-design**: Visual art creation
 - **frontend-design**: Frontend UI design standards
+
+### Academic Writing
+- **paper-polish**: Automated LaTeX paper improvement (de-AI polishing, citation expansion, figure/table verification, compilation cleanup, full quality review)
 
 ## Quick Start
 

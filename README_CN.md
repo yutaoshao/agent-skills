@@ -24,6 +24,9 @@ agent-skills/
 │   ├── canvas-design/       # 画布设计
 │   ├── frontend-design/     # 前端设计系统
 │   └── document-skills/     # 文档处理 (docx/xlsx/pptx/pdf)
+├── paper-polish/            # 学术论文润色 (LaTeX)
+│   ├── SKILL.md             # 6 个模块化工作流
+│   └── references/          # 模式目录与检查清单
 └── [其他技能库]/             # 扩展位置
 ```
 
@@ -32,6 +35,7 @@ agent-skills/
 | 技能库 | 描述 | SDK | 模块数 |
 |--------|------|-----|--------|
 | [glm-skills](./glm-skills/) | 智谱 GLM AI 能力集合 | z-ai-web-dev-sdk | 12 |
+| [paper-polish](./paper-polish/) | 学术 LaTeX 论文润色工作流 | - | 6 |
 
 ## 技能分类
 
@@ -58,6 +62,9 @@ agent-skills/
 ### 设计系统
 - **canvas-design**: 视觉艺术创作
 - **frontend-design**: 前端 UI 设计规范
+
+### 学术写作
+- **paper-polish**: 自动化 LaTeX 论文润色（去 AI 痕迹、引用扩展、图表验证、编译清理、全面质量审查）
 
 ## 快速开始
 
