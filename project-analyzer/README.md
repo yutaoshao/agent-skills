@@ -17,6 +17,21 @@ Eight modular workflows that can be invoked individually or combined:
 | Module 7 | Risk & technical debt | risks, tech debt, security, TODOs |
 | Module 8 | Comprehensive report | full analysis, overview, onboarding |
 
+## Installation
+
+### Option A: Claude Code Plugin Marketplace
+
+```bash
+/plugin marketplace add yutaoshao/agent-skills/project-analyzer
+```
+
+### Option B: Manual installation
+
+```bash
+git clone https://github.com/yutaoshao/agent-skills.git
+cp -r agent-skills/project-analyzer ~/.claude/skills/
+```
+
 ## Skill Structure
 
 ```

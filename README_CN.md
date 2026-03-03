@@ -75,11 +75,35 @@ agent-skills/
 
 ## 快速开始
 
-进入对应技能库查看详细文档：
+### 通过 Claude Code 插件市场安装
+
+安装整个仓库（所有技能）：
 
 ```bash
-cd glm-skills
-cat README.md
+/plugin marketplace add yutaoshao/agent-skills
+```
+
+或单独安装某个技能：
+
+```bash
+# 智谱 GLM AI 技能库（语音、视觉、生成、搜索、设计、文档）
+/plugin marketplace add yutaoshao/agent-skills/glm-skills
+
+# 学术论文润色
+/plugin marketplace add yutaoshao/agent-skills/paper-polish
+
+# 项目分析器
+/plugin marketplace add yutaoshao/agent-skills/project-analyzer
+```
+
+### 手动安装
+
+克隆仓库并将所需技能复制到 Claude skills 目录：
+
+```bash
+git clone https://github.com/yutaoshao/agent-skills.git
+cp -r agent-skills/paper-polish ~/.claude/skills/
+cp -r agent-skills/project-analyzer ~/.claude/skills/
 ```
 
 每个技能模块的 `SKILL.md` 包含完整的使用指南和代码示例。

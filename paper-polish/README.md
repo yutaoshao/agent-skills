@@ -17,20 +17,18 @@ Six modular workflows that can be invoked individually or combined:
 
 ## Installation
 
-### Option A: Direct installation
+### Option A: Claude Code Plugin Marketplace
 
 ```bash
-# Create skills directory if not exists
-mkdir -p ~/.claude/skills/
-
-# Clone and copy
-git clone https://github.com/yutaoshao/paper-polish-skill.git
-cp -r paper-polish-skill/paper-polish ~/.claude/skills/
+/plugin marketplace add yutaoshao/agent-skills/paper-polish
 ```
 
-### Option B: From zip
+### Option B: Manual installation
 
-Download `paper-polish.zip` from releases and extract to `~/.claude/skills/`.
+```bash
+git clone https://github.com/yutaoshao/agent-skills.git
+cp -r agent-skills/paper-polish ~/.claude/skills/
+```
 
 ## Skill Structure
 

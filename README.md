@@ -75,11 +75,35 @@ agent-skills/
 
 ## Quick Start
 
-Navigate to the corresponding skill library for detailed documentation:
+### Install via Claude Code Plugin Marketplace
+
+Install the entire repository (all skills):
 
 ```bash
-cd glm-skills
-cat README.md
+/plugin marketplace add yutaoshao/agent-skills
+```
+
+Or install individual skills:
+
+```bash
+# GLM AI Skills (ASR, TTS, LLM, VLM, image/video generation, web, design, docs)
+/plugin marketplace add yutaoshao/agent-skills/glm-skills
+
+# Academic Paper Polish
+/plugin marketplace add yutaoshao/agent-skills/paper-polish
+
+# Project Analyzer
+/plugin marketplace add yutaoshao/agent-skills/project-analyzer
+```
+
+### Manual Installation
+
+Clone the repository and copy the desired skill to your Claude skills directory:
+
+```bash
+git clone https://github.com/yutaoshao/agent-skills.git
+cp -r agent-skills/paper-polish ~/.claude/skills/
+cp -r agent-skills/project-analyzer ~/.claude/skills/
 ```
 
 Each skill module's `SKILL.md` contains complete usage guides and code examples.
