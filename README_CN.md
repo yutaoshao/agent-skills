@@ -24,6 +24,12 @@ agent-skills/
 │   ├── canvas-design/       # 画布设计
 │   ├── frontend-design/     # 前端设计系统
 │   └── document-skills/     # 文档处理 (docx/xlsx/pptx/pdf)
+├── paper-writer/            # 学术论文写作（全流程）
+│   ├── SKILL.md             # 10 阶段工作流（代码到投稿）
+│   ├── modules/             # 10 个阶段模块
+│   ├── references/          # 写作哲学、检查清单与指南
+│   ├── plan-template/       # 跨会话上下文管理
+│   └── scripts/             # 初始化与风格检查脚本
 ├── paper-polish/            # 学术论文润色 (LaTeX)
 │   ├── SKILL.md             # 6 个模块化工作流
 │   └── references/          # 模式目录与检查清单
@@ -38,6 +44,7 @@ agent-skills/
 | 技能库 | 描述 | SDK | 模块数 |
 |--------|------|-----|--------|
 | [glm-skills](./glm-skills/) | 智谱 GLM AI 能力集合 | z-ai-web-dev-sdk | 12 |
+| [paper-writer](./paper-writer/) | 学术论文全流程写作（从代码到投稿） | - | 10 |
 | [paper-polish](./paper-polish/) | 学术 LaTeX 论文润色工作流 | - | 6 |
 | [project-analyzer](./project-analyzer/) | 代码库分析与开发者上手 | - | 8 |
 
@@ -68,6 +75,7 @@ agent-skills/
 - **frontend-design**: 前端 UI 设计规范
 
 ### 学术写作
+- **paper-writer**: 学术论文全流程写作，从项目源代码到可投稿 LaTeX 论文（10 阶段：代码分析、文献综述、论文结构、章节写作、图表生成、引用管理、去AI润色、LaTeX编译、投稿审查、返修重投）
 - **paper-polish**: 自动化 LaTeX 论文润色（去 AI 痕迹、引用扩展、图表验证、编译清理、全面质量审查）
 
 ### 开发者工具
@@ -88,6 +96,9 @@ agent-skills/
 ```bash
 # 智谱 GLM AI 技能库（语音、视觉、生成、搜索、设计、文档）
 /plugin marketplace add yutaoshao/agent-skills/glm-skills
+
+# 学术论文写作（全流程）
+/plugin marketplace add yutaoshao/agent-skills/paper-writer
 
 # 学术论文润色
 /plugin marketplace add yutaoshao/agent-skills/paper-polish

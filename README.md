@@ -24,6 +24,12 @@ agent-skills/
 │   ├── canvas-design/       # Canvas Design
 │   ├── frontend-design/     # Frontend Design System
 │   └── document-skills/     # Document Processing (docx/xlsx/pptx/pdf)
+├── paper-writer/            # Academic Paper Writing (Full Lifecycle)
+│   ├── SKILL.md             # 10-stage workflow (code to submission)
+│   ├── modules/             # 10 stage modules
+│   ├── references/          # Writing philosophy, checklists & guides
+│   ├── plan-template/       # Cross-session context management
+│   └── scripts/             # Init and style check scripts
 ├── paper-polish/            # Academic Paper Polish (LaTeX)
 │   ├── SKILL.md             # 6 modular workflows
 │   └── references/          # Pattern catalogs & checklists
@@ -38,6 +44,7 @@ agent-skills/
 | Library | Description | SDK | Modules |
 |---------|-------------|-----|---------|
 | [glm-skills](./glm-skills/) | GLM AI capabilities collection | z-ai-web-dev-sdk | 12 |
+| [paper-writer](./paper-writer/) | Full lifecycle academic paper writing (code to submission) | - | 10 |
 | [paper-polish](./paper-polish/) | Academic LaTeX paper improvement workflows | - | 6 |
 | [project-analyzer](./project-analyzer/) | Codebase analysis & developer onboarding | - | 8 |
 
@@ -68,6 +75,7 @@ agent-skills/
 - **frontend-design**: Frontend UI design standards
 
 ### Academic Writing
+- **paper-writer**: Full lifecycle academic paper writing from project source code to submission-ready LaTeX (10 stages: code analysis, literature review, structure, drafting, figures, citations, de-AI polish, LaTeX compilation, submission review, revision)
 - **paper-polish**: Automated LaTeX paper improvement (de-AI polishing, citation expansion, figure/table verification, compilation cleanup, full quality review)
 
 ### Developer Tools
@@ -88,6 +96,9 @@ Or install individual skills:
 ```bash
 # GLM AI Skills (ASR, TTS, LLM, VLM, image/video generation, web, design, docs)
 /plugin marketplace add yutaoshao/agent-skills/glm-skills
+
+# Academic Paper Writer (Full Lifecycle)
+/plugin marketplace add yutaoshao/agent-skills/paper-writer
 
 # Academic Paper Polish
 /plugin marketplace add yutaoshao/agent-skills/paper-polish

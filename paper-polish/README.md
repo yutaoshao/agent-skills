@@ -60,6 +60,10 @@ The skill auto-activates when Claude detects LaTeX paper improvement tasks. Exam
 - "Run a full quality review before submission"
 - "Help me prepare this paper for ISA Transactions submission"
 
+## Related
+
+For full lifecycle paper writing from project source code to submission, see [paper-writer](../paper-writer/).
+
 ## License
 
 MIT
