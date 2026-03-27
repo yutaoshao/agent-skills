@@ -2,135 +2,110 @@
 
 [English](./README.md) | [中文](./README_CN.md)
 
-AI Agent 技能库仓库，用于存放和管理各类 AI 能力模块。
+这是本仓库的技能总览入口。根目录的中英文 README 是唯一的总览文档；各个技能目录以 `SKILL.md` 作为唯一权威说明，不再依赖各自的 `README.md`。
 
-## 概览
+## 仓库结构
 
-本仓库是一个模块化的 AI 技能集合，为智能体（Agent）提供标准化的能力接入方案。每个技能模块包含详细的使用指南、代码示例和最佳实践。
-
-## 项目结构
-
-```
+```text
 agent-skills/
-├── glm-skills/              # 智谱 GLM 技能库
-│   ├── ASR/                 # 语音识别
-│   ├── TTS/                 # 文本转语音
-│   ├── LLM/                 # 大语言模型
-│   ├── VLM/                 # 视觉语言模型
-│   ├── image-generation/    # 图像生成
-│   ├── video-generation/    # 视频生成
-│   ├── web-search/          # 网络搜索
-│   ├── web-reader/          # 网页内容提取
-│   ├── canvas-design/       # 画布设计
-│   ├── frontend-design/     # 前端设计系统
-│   └── document-skills/     # 文档处理 (docx/xlsx/pptx/pdf)
-├── paper-writer/            # 学术论文写作（全流程）
-│   ├── SKILL.md             # 10 阶段工作流（代码到投稿）
-│   ├── modules/             # 10 个阶段模块
-│   ├── references/          # 写作哲学、检查清单与指南
-│   ├── plan-template/       # 跨会话上下文管理
-│   └── scripts/             # 初始化与风格检查脚本
-├── paper-polish/            # 学术论文润色 (LaTeX)
-│   ├── SKILL.md             # 6 个模块化工作流
-│   └── references/          # 模式目录与检查清单
-├── project-analyzer/        # 代码库分析与上手
-│   ├── SKILL.md             # 8 个模块化工作流
-│   └── references/          # 检查清单、模式目录与报告模板
-└── [其他技能库]/             # 扩展位置
+├── README.md
+├── README_CN.md
+├── glm-skills/
+│   ├── ASR/
+│   ├── TTS/
+│   ├── LLM/
+│   ├── VLM/
+│   ├── image-generation/
+│   ├── video-generation/
+│   ├── web-search/
+│   ├── web-reader/
+│   ├── canvas-design/
+│   ├── frontend-design/
+│   └── document-skills/
+│       ├── docx/
+│       ├── xlsx/
+│       ├── pptx/
+│       └── pdf/
+├── paper-writer/
+├── paper-polish/
+└── project-analyzer/
 ```
 
-## 技能库列表
+## 约定
 
-| 技能库 | 描述 | SDK | 模块数 |
-|--------|------|-----|--------|
-| [glm-skills](./glm-skills/) | 智谱 GLM AI 能力集合 | z-ai-web-dev-sdk | 12 |
-| [paper-writer](./paper-writer/) | 学术论文全流程写作（从代码到投稿） | - | 10 |
-| [paper-polish](./paper-polish/) | 学术 LaTeX 论文润色工作流 | - | 6 |
-| [project-analyzer](./project-analyzer/) | 代码库分析与开发者上手 | - | 8 |
+- 每个可安装 skill 都必须包含 `SKILL.md`。
+- `SKILL.md` 是触发条件、工作流、引用资料和脚本说明的权威来源。
+- 仓库级的发现方式、安装说明和维护规范统一放在根目录这对 README 中。
+- `references/`、`scripts/`、`assets/`、`modules/`、`plan-template/` 等可选目录，只在会影响执行时由 `SKILL.md` 说明即可。
 
-## 技能分类
+## 技能索引
 
-### 语音与对话
-- **ASR**: 语音识别，支持多种音频格式
-- **TTS**: 语音合成，多种音色可选
-- **LLM**: 大语言模型对话
+### 研究与开发类 Skills
 
-### 视觉与多模态
-- **VLM**: 图像理解与分析
-- **image-generation**: AI 图像生成
-- **video-generation**: AI 视频生成
+| Skill | 作用 |
+|------|------|
+| `paper-writer` | 面向 CS/ML/AI 项目的论文全流程写作，从仓库分析到投稿与返修 |
+| `paper-polish` | 面向 LaTeX 论文的润色、去 AI 痕迹、补充引用、图表核查和投稿前检查 |
+| `project-analyzer` | 面向陌生代码库的上手分析、架构梳理、依赖检查、风险识别和报告生成 |
+| `sync-context` | 使用 `CONTEXT.md`、镜像指令文件与 git/hook 校验的跨 Agent 交接工作流 |
 
-### Web 能力
-- **web-search**: 网络搜索
-- **web-reader**: 网页内容解析
+### GLM Skills
 
-### 文档处理
-- **docx**: Word 文档操作
-- **xlsx**: Excel 表格处理
-- **pptx**: PowerPoint 演示
-- **pdf**: PDF 文档处理
+| Skill | 作用 |
+|------|------|
+| `ASR` | 基于 `z-ai-web-dev-sdk` 的语音转文本工作流 |
+| `TTS` | 多音色、可调参数的文本转语音工作流 |
+| `LLM` | 对话补全与聊天应用工作流 |
+| `VLM` | 图像理解与多模态对话 |
+| `image-generation` | 文生图能力 |
+| `video-generation` | 文生视频 / 图生视频的异步生成流程 |
+| `web-search` | 网络搜索与结果检索 |
+| `web-reader` | 网页正文抽取与内容读取 |
+| `canvas-design` | 静态视觉设计与海报类创作 |
+| `frontend-design` | 以 design token 为核心的前端实现与界面质量指导 |
+| `docx` | Word 文档创建、编辑与审阅 |
+| `xlsx` | 表格创建、分析与保公式编辑 |
+| `pptx` | 演示文稿创建与编辑 |
+| `pdf` | PDF 抽取、生成、表单填写与文档处理 |
 
-### 设计系统
-- **canvas-design**: 视觉艺术创作
-- **frontend-design**: 前端 UI 设计规范
+## 安装方式
 
-### 学术写作
-- **paper-writer**: 学术论文全流程写作，从项目源代码到可投稿 LaTeX 论文（10 阶段：代码分析、文献综述、论文结构、章节写作、图表生成、引用管理、去AI润色、LaTeX编译、投稿审查、返修重投）
-- **paper-polish**: 自动化 LaTeX 论文润色（去 AI 痕迹、引用扩展、图表验证、编译清理、全面质量审查）
+### Claude Code
 
-### 开发者工具
-- **project-analyzer**: 系统化代码库分析（技术栈识别、项目结构、架构模式、依赖分析、代码质量、开发流程、风险评估、综合报告），适用于项目交接与新人上手
-
-## 快速开始
-
-### 通过 Claude Code 插件市场安装
-
-安装整个仓库（所有技能）：
+如果是个人安装，把目标技能目录复制到 `~/.claude/skills/<skill-name>`：
 
 ```bash
-/plugin marketplace add yutaoshao/agent-skills
+cp -R /path/to/agent-skills/paper-writer ~/.claude/skills/paper-writer
 ```
 
-或单独安装某个技能：
+如果是项目级安装，则复制到目标仓库的 `.claude/skills/<skill-name>`。
+
+安装完成后，重启 Claude Code 或重新加载 skills 以使新技能生效。
+
+### Codex
+
+把目标技能目录复制到 `~/.codex/skills/<skill-name>`：
 
 ```bash
-# 智谱 GLM AI 技能库（语音、视觉、生成、搜索、设计、文档）
-/plugin marketplace add yutaoshao/agent-skills/glm-skills
-
-# 学术论文写作（全流程）
-/plugin marketplace add yutaoshao/agent-skills/paper-writer
-
-# 学术论文润色
-/plugin marketplace add yutaoshao/agent-skills/paper-polish
-
-# 项目分析器
-/plugin marketplace add yutaoshao/agent-skills/project-analyzer
+cp -R /path/to/agent-skills/paper-writer ~/.codex/skills/paper-writer
 ```
 
-### 手动安装
+安装完成后，重启 Codex 以加载新技能。
 
-克隆仓库并将所需技能复制到 Claude skills 目录：
+### 其他 Agent 运行时
 
-```bash
-git clone https://github.com/yutaoshao/agent-skills.git
-cp -r agent-skills/paper-polish ~/.claude/skills/
-cp -r agent-skills/project-analyzer ~/.claude/skills/
-```
+如果你使用的是其他 Agent 运行时，把目标技能目录整体复制到对应的 skills 目录即可。可迁移的最小单元就是以 `SKILL.md` 为核心的技能文件夹。
 
-每个技能模块的 `SKILL.md` 包含完整的使用指南和代码示例。
+## 维护规范
 
-## 贡献指南
+新增或更新 skill 时：
 
-添加新技能模块时，请遵循以下结构：
-
-```
-skill-name/
-├── SKILL.md         # 核心文档 (必需)
-├── LICENSE.txt      # 许可证 (必需)
-├── scripts/         # 示例代码 (推荐)
-└── README.md        # 快速入门 (可选)
-```
+1. 添加或更新 `SKILL.md`。
+2. 把详细执行说明保留在 `SKILL.md` 及其引用文件中。
+3. 如果技能列表、安装方式或仓库约定变了，同步更新根目录中英文 README。
+4. 除非某个平台强制要求，否则不要再为单个 skill 添加 `README.md`。
+5. 本仓库内涉及跨 Agent 协作时，优先使用 `sync-context/`，并配合 `CONTEXT.md`、`CLAUDE.md` 与自动生成的 `AGENTS.md`。
 
 ## 许可证
 
-各技能模块独立授权，详见各模块目录下的 `LICENSE.txt`。
+每个技能目录自行维护许可证信息；如果目录中有 `LICENSE.txt`，以该文件为准。
