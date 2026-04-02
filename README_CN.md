@@ -36,6 +36,9 @@ agent-skills/
 ├── project-analyzer/        # 代码库分析与上手
 │   ├── SKILL.md             # 8 个模块化工作流
 │   └── references/          # 检查清单、模式目录与报告模板
+├── sync-context/            # 跨 Agent 上下文同步与交接
+│   ├── SKILL.md             # 会话协议与验证
+│   └── scripts/             # 初始化、检查与注入脚本
 └── [其他技能库]/             # 扩展位置
 ```
 
@@ -47,6 +50,7 @@ agent-skills/
 | [paper-writer](./paper-writer/) | 学术论文全流程写作（从代码到投稿） | - | 10 |
 | [paper-polish](./paper-polish/) | 学术 LaTeX 论文润色工作流 | - | 6 |
 | [project-analyzer](./project-analyzer/) | 代码库分析与开发者上手 | - | 8 |
+| [sync-context](./sync-context/) | 跨 Agent 上下文同步与交接协议 | - | 3 |
 
 ## 技能分类
 
@@ -80,6 +84,7 @@ agent-skills/
 
 ### 开发者工具
 - **project-analyzer**: 系统化代码库分析（技术栈识别、项目结构、架构模式、依赖分析、代码质量、开发流程、风险评估、综合报告），适用于项目交接与新人上手
+- **sync-context**: 跨 Agent 上下文同步，通过 `CONTEXT.md` 交接协议实现（会话启动/结束协议、结构验证、时效检查、通过 `context/` 子目录渐进式披露）
 
 ## 快速开始
 
@@ -105,6 +110,9 @@ agent-skills/
 
 # 项目分析器
 /plugin marketplace add yutaoshao/agent-skills/project-analyzer
+
+# 跨 Agent 上下文同步
+/plugin marketplace add yutaoshao/agent-skills/sync-context
 ```
 
 ### 手动安装

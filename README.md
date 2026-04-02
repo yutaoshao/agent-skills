@@ -36,6 +36,9 @@ agent-skills/
 ├── project-analyzer/        # Codebase Analysis & Onboarding
 │   ├── SKILL.md             # 8 modular workflows
 │   └── references/          # Checklists, pattern catalog & report template
+├── sync-context/            # Cross-Agent Context Sync & Handoff
+│   ├── SKILL.md             # Session protocol & validation
+│   └── scripts/             # Init, check & inject scripts
 └── [other-skills]/          # Extension Point
 ```
 
@@ -47,6 +50,7 @@ agent-skills/
 | [paper-writer](./paper-writer/) | Full lifecycle academic paper writing (code to submission) | - | 10 |
 | [paper-polish](./paper-polish/) | Academic LaTeX paper improvement workflows | - | 6 |
 | [project-analyzer](./project-analyzer/) | Codebase analysis & developer onboarding | - | 8 |
+| [sync-context](./sync-context/) | Cross-agent context sync & handoff protocol | - | 3 |
 
 ## Skill Categories
 
@@ -80,6 +84,7 @@ agent-skills/
 
 ### Developer Tools
 - **project-analyzer**: Systematic codebase analysis for project takeover and onboarding (tech stack, structure, architecture, dependencies, code quality, dev workflow, risk assessment, comprehensive report)
+- **sync-context**: Cross-agent context synchronization via `CONTEXT.md` handoff protocol (session init/end protocol, structure validation, freshness checks, progressive disclosure via `context/` subdirectory)
 
 ## Quick Start
 
@@ -105,6 +110,9 @@ Or install individual skills:
 
 # Project Analyzer
 /plugin marketplace add yutaoshao/agent-skills/project-analyzer
+
+# Cross-Agent Context Sync
+/plugin marketplace add yutaoshao/agent-skills/sync-context
 ```
 
 ### Manual Installation
