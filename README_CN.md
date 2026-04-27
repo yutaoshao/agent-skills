@@ -6,7 +6,7 @@ AI Agent 技能库仓库，用于存放和管理各类 AI 能力模块。
 
 ## 概览
 
-本仓库是一个模块化的 AI 技能集合，为智能体（Agent）提供标准化的能力接入方案。每个技能模块包含详细的使用指南、代码示例和最佳实践。
+本仓库是一个模块化的 AI 技能集合，为智能体（Agent）提供标准化的能力接入方案。每个技能模块包含详细的使用指南、代码示例和最佳实践，覆盖模型能力、学术写作、开发者工作流与仓库级辅助工具。
 
 ## 项目结构
 
@@ -39,6 +39,10 @@ agent-skills/
 ├── sync-context/            # 跨 Agent 上下文同步与交接
 │   ├── SKILL.md             # 会话协议与验证
 │   └── scripts/             # 初始化、检查与注入脚本
+├── git-commit/              # Git 暂存与详细提交说明
+│   ├── SKILL.md             # 提交流程与暂存规则
+│   ├── references/          # commit type、scope 与 body 规范
+│   └── scripts/             # 工作区变更摘要脚本
 └── [其他技能库]/             # 扩展位置
 ```
 
@@ -51,6 +55,7 @@ agent-skills/
 | [paper-polish](./paper-polish/) | 学术 LaTeX 论文润色工作流 | - | 6 |
 | [project-analyzer](./project-analyzer/) | 代码库分析与开发者上手 | - | 8 |
 | [sync-context](./sync-context/) | 跨 Agent 上下文同步与交接协议 | - | 3 |
+| [git-commit](./git-commit/) | Git 暂存与详细 conventional commit 工作流 | - | 6 |
 
 ## 技能分类
 
@@ -85,6 +90,7 @@ agent-skills/
 ### 开发者工具
 - **project-analyzer**: 系统化代码库分析（技术栈识别、项目结构、架构模式、依赖分析、代码质量、开发流程、风险评估、综合报告），适用于项目交接与新人上手
 - **sync-context**: 跨 Agent 上下文同步，通过 `CONTEXT.md` 交接协议实现（会话启动/结束协议、结构验证、时效检查、通过 `context/` 子目录渐进式披露）
+- **git-commit**: 面向真实仓库 diff 的 Git 暂存与详细提交说明（范围判断、staged/unstaged 检查、conventional commit 格式化、提交后核对）
 
 ## 快速开始
 
@@ -113,6 +119,9 @@ agent-skills/
 
 # 跨 Agent 上下文同步
 /plugin marketplace add yutaoshao/agent-skills/sync-context
+
+# Git 暂存与提交说明
+/plugin marketplace add yutaoshao/agent-skills/git-commit
 ```
 
 ### 手动安装
@@ -123,6 +132,7 @@ agent-skills/
 git clone https://github.com/yutaoshao/agent-skills.git
 cp -r agent-skills/paper-polish ~/.claude/skills/
 cp -r agent-skills/project-analyzer ~/.claude/skills/
+cp -r agent-skills/git-commit ~/.claude/skills/
 ```
 
 每个技能模块的 `SKILL.md` 包含完整的使用指南和代码示例。
@@ -138,6 +148,8 @@ skill-name/
 ├── scripts/         # 示例代码 (推荐)
 └── README.md        # 快速入门 (可选)
 ```
+
+如果新增的顶层技能会影响仓库发现路径、安装方式或能力总览，请在同一次修改中同步更新 `README.md` 和 `README_CN.md`。
 
 ## 许可证
 

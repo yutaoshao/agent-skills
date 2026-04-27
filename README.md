@@ -6,7 +6,7 @@ A repository for storing and managing AI Agent skill modules.
 
 ## Overview
 
-This is a modular AI skill collection that provides standardized capability access for intelligent agents. Each skill module contains detailed usage guides, code examples, and best practices.
+This is a modular AI skill collection that provides standardized capability access for intelligent agents. Each skill module contains detailed usage guides, code examples, and best practices, spanning model capabilities, academic workflows, developer onboarding, and repo workflow utilities.
 
 ## Project Structure
 
@@ -39,6 +39,10 @@ agent-skills/
 ├── sync-context/            # Cross-Agent Context Sync & Handoff
 │   ├── SKILL.md             # Session protocol & validation
 │   └── scripts/             # Init, check & inject scripts
+├── git-commit/              # Git Staging & Detailed Commit Drafting
+│   ├── SKILL.md             # Commit workflow and staging rules
+│   ├── references/          # Commit type, scope, and body guidelines
+│   └── scripts/             # Working tree summary helper
 └── [other-skills]/          # Extension Point
 ```
 
@@ -51,6 +55,7 @@ agent-skills/
 | [paper-polish](./paper-polish/) | Academic LaTeX paper improvement workflows | - | 6 |
 | [project-analyzer](./project-analyzer/) | Codebase analysis & developer onboarding | - | 8 |
 | [sync-context](./sync-context/) | Cross-agent context sync & handoff protocol | - | 3 |
+| [git-commit](./git-commit/) | Git staging and detailed conventional commit workflow | - | 6 |
 
 ## Skill Categories
 
@@ -85,6 +90,7 @@ agent-skills/
 ### Developer Tools
 - **project-analyzer**: Systematic codebase analysis for project takeover and onboarding (tech stack, structure, architecture, dependencies, code quality, dev workflow, risk assessment, comprehensive report)
 - **sync-context**: Cross-agent context synchronization via `CONTEXT.md` handoff protocol (session init/end protocol, structure validation, freshness checks, progressive disclosure via `context/` subdirectory)
+- **git-commit**: Intentional staging and detailed commit drafting for real repository diffs (scope detection, staged/unstaged inspection, conventional commit formatting, post-commit verification)
 
 ## Quick Start
 
@@ -113,6 +119,9 @@ Or install individual skills:
 
 # Cross-Agent Context Sync
 /plugin marketplace add yutaoshao/agent-skills/sync-context
+
+# Git staging and commit drafting
+/plugin marketplace add yutaoshao/agent-skills/git-commit
 ```
 
 ### Manual Installation
@@ -123,6 +132,7 @@ Clone the repository and copy the desired skill to your Claude skills directory:
 git clone https://github.com/yutaoshao/agent-skills.git
 cp -r agent-skills/paper-polish ~/.claude/skills/
 cp -r agent-skills/project-analyzer ~/.claude/skills/
+cp -r agent-skills/git-commit ~/.claude/skills/
 ```
 
 Each skill module's `SKILL.md` contains complete usage guides and code examples.
@@ -138,6 +148,8 @@ skill-name/
 ├── scripts/         # Example code (recommended)
 └── README.md        # Quick start (optional)
 ```
+
+If a new top-level skill changes repository discovery or installation paths, update `README.md` and `README_CN.md` in the same change.
 
 ## License
 
