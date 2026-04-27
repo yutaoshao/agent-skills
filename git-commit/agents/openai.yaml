@@ -1,4 +1,0 @@
-interface:
-  display_name: "Git Commit"
-  short_description: "Stage changes and write detailed commits"
-  default_prompt: "Use $git-commit to stage my current changes and create a detailed conventional commit."

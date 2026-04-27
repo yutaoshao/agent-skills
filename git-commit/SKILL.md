@@ -1,6 +1,6 @@
 ---
 name: git-commit
-description: Stage cohesive repository changes and create detailed Git commits grounded in the real diff. Use when Codex needs to inspect current git modifications, decide what to stage, write a conventional-commit style subject, and run non-interactive `git add` plus `git commit` with a precise multi-bullet body. Trigger on requests like "commit my changes", "write a detailed commit message", "stage and commit this work", or "make a conventional commit for the current diff".
+description: Stage cohesive repository changes and create detailed Git commits grounded in the real diff. Use when inspecting current git modifications, deciding what to stage, writing a conventional-commit style subject, and running non-interactive `git add` plus `git commit` with a precise multi-bullet body. Trigger on requests like "commit my changes", "write a detailed commit message", "stage and commit this work", or "make a conventional commit for the current diff".
 ---
 
 # Git Commit

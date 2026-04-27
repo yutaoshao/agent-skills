@@ -16,7 +16,7 @@ Maintain an external project memory so switching between AI models never loses d
 
 ## When to Use
 
-- Switching between AI coding assistants (Claude Code, Codex, Gemini, etc.)
+- Switching between AI coding assistants or agent runtimes
 - Cross-agent context synchronization or handoff
 - Setting up `CONTEXT.md` project memory
 - Any request involving project state persistence across sessions

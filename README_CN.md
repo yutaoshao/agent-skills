@@ -6,7 +6,7 @@ AI Agent 技能库仓库，用于存放和管理各类 AI 能力模块。
 
 ## 概览
 
-本仓库是一个模块化的 AI 技能集合，为智能体（Agent）提供标准化的能力接入方案。每个技能模块包含详细的使用指南、代码示例和最佳实践，覆盖模型能力、学术写作、开发者工作流与仓库级辅助工具。
+本仓库是一个模块化的 AI 技能集合，为智能体（Agent）提供标准化的能力接入方案。每个技能模块包含详细的使用指南、代码示例和最佳实践，覆盖模型能力、学术写作、阅读学习方法、开发者工作流与仓库级辅助工具。
 
 ## 项目结构
 
@@ -43,6 +43,8 @@ agent-skills/
 │   ├── SKILL.md             # 提交流程与暂存规则
 │   ├── references/          # commit type、scope 与 body 规范
 │   └── scripts/             # 工作区变更摘要脚本
+├── how-to-read-a-book/       # 主动阅读与书籍分析
+│   └── SKILL.md             # 检视阅读、分析阅读与主题阅读工作流
 └── [其他技能库]/             # 扩展位置
 ```
 
@@ -56,6 +58,7 @@ agent-skills/
 | [project-analyzer](./project-analyzer/) | 代码库分析与开发者上手 | - | 8 |
 | [sync-context](./sync-context/) | 跨 Agent 上下文同步与交接协议 | - | 3 |
 | [git-commit](./git-commit/) | Git 暂存与详细 conventional commit 工作流 | - | 6 |
+| [how-to-read-a-book](./how-to-read-a-book/) | 面向书籍、论文与长文的主动阅读工作流 | - | 4 |
 
 ## 技能分类
 
@@ -86,6 +89,9 @@ agent-skills/
 ### 学术写作
 - **paper-writer**: 学术论文全流程写作，从项目源代码到可投稿 LaTeX 论文（10 阶段：代码分析、文献综述、论文结构、章节写作、图表生成、引用管理、去AI润色、LaTeX编译、投稿审查、返修重投）
 - **paper-polish**: 自动化 LaTeX 论文润色（去 AI 痕迹、引用扩展、图表验证、编译清理、全面质量审查）
+
+### 阅读与学习
+- **how-to-read-a-book**: 受 *How to Read a Book* / 《如何阅读一本书》启发的主动阅读工作流（检视阅读、分析阅读、主题阅读比较、按体裁生成阅读产物）
 
 ### 开发者工具
 - **project-analyzer**: 系统化代码库分析（技术栈识别、项目结构、架构模式、依赖分析、代码质量、开发流程、风险评估、综合报告），适用于项目交接与新人上手
@@ -122,6 +128,9 @@ agent-skills/
 
 # Git 暂存与提交说明
 /plugin marketplace add yutaoshao/agent-skills/git-commit
+
+# 主动阅读与书籍分析
+/plugin marketplace add yutaoshao/agent-skills/how-to-read-a-book
 ```
 
 ### 手动安装
@@ -133,6 +142,7 @@ git clone https://github.com/yutaoshao/agent-skills.git
 cp -r agent-skills/paper-polish ~/.claude/skills/
 cp -r agent-skills/project-analyzer ~/.claude/skills/
 cp -r agent-skills/git-commit ~/.claude/skills/
+cp -r agent-skills/how-to-read-a-book ~/.claude/skills/
 ```
 
 每个技能模块的 `SKILL.md` 包含完整的使用指南和代码示例。

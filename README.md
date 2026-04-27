@@ -6,7 +6,7 @@ A repository for storing and managing AI Agent skill modules.
 
 ## Overview
 
-This is a modular AI skill collection that provides standardized capability access for intelligent agents. Each skill module contains detailed usage guides, code examples, and best practices, spanning model capabilities, academic workflows, developer onboarding, and repo workflow utilities.
+This is a modular AI skill collection that provides standardized capability access for intelligent agents. Each skill module contains detailed usage guides, code examples, and best practices, spanning model capabilities, academic workflows, reading and learning methods, developer onboarding, and repo workflow utilities.
 
 ## Project Structure
 
@@ -43,6 +43,8 @@ agent-skills/
 │   ├── SKILL.md             # Commit workflow and staging rules
 │   ├── references/          # Commit type, scope, and body guidelines
 │   └── scripts/             # Working tree summary helper
+├── how-to-read-a-book/       # Active Reading & Book Analysis
+│   └── SKILL.md             # Inspectional, analytical, and syntopical reading workflows
 └── [other-skills]/          # Extension Point
 ```
 
@@ -56,6 +58,7 @@ agent-skills/
 | [project-analyzer](./project-analyzer/) | Codebase analysis & developer onboarding | - | 8 |
 | [sync-context](./sync-context/) | Cross-agent context sync & handoff protocol | - | 3 |
 | [git-commit](./git-commit/) | Git staging and detailed conventional commit workflow | - | 6 |
+| [how-to-read-a-book](./how-to-read-a-book/) | Active reading workflows for books, papers, and long-form texts | - | 4 |
 
 ## Skill Categories
 
@@ -86,6 +89,9 @@ agent-skills/
 ### Academic Writing
 - **paper-writer**: Full lifecycle academic paper writing from project source code to submission-ready LaTeX (10 stages: code analysis, literature review, structure, drafting, figures, citations, de-AI polish, LaTeX compilation, submission review, revision)
 - **paper-polish**: Automated LaTeX paper improvement (de-AI polishing, citation expansion, figure/table verification, compilation cleanup, full quality review)
+
+### Reading & Learning
+- **how-to-read-a-book**: Active reading workflows inspired by *How to Read a Book* / 《如何阅读一本书》 (inspectional reading, analytical reading, syntopical comparison, genre-specific reading artifacts)
 
 ### Developer Tools
 - **project-analyzer**: Systematic codebase analysis for project takeover and onboarding (tech stack, structure, architecture, dependencies, code quality, dev workflow, risk assessment, comprehensive report)
@@ -122,6 +128,9 @@ Or install individual skills:
 
 # Git staging and commit drafting
 /plugin marketplace add yutaoshao/agent-skills/git-commit
+
+# Active reading and book analysis
+/plugin marketplace add yutaoshao/agent-skills/how-to-read-a-book
 ```
 
 ### Manual Installation
@@ -133,6 +142,7 @@ git clone https://github.com/yutaoshao/agent-skills.git
 cp -r agent-skills/paper-polish ~/.claude/skills/
 cp -r agent-skills/project-analyzer ~/.claude/skills/
 cp -r agent-skills/git-commit ~/.claude/skills/
+cp -r agent-skills/how-to-read-a-book ~/.claude/skills/
 ```
 
 Each skill module's `SKILL.md` contains complete usage guides and code examples.
