@@ -45,6 +45,9 @@ agent-skills/
 │   └── scripts/             # 工作区变更摘要脚本
 ├── how-to-read-a-book/       # 主动阅读与书籍分析
 │   └── SKILL.md             # 检视阅读、分析阅读与主题阅读工作流
+├── module-diagram-planner/  # 模块图谱选择与规划
+│   ├── SKILL.md             # 图谱规划工作流
+│   └── references/          # 图类型目录与选择启发
 └── [其他技能库]/             # 扩展位置
 ```
 
@@ -59,6 +62,7 @@ agent-skills/
 | [sync-context](./sync-context/) | 跨 Agent 上下文同步与交接协议 | - | 3 |
 | [git-commit](./git-commit/) | Git 暂存与详细 conventional commit 工作流 | - | 6 |
 | [how-to-read-a-book](./how-to-read-a-book/) | 面向书籍、论文与长文的主动阅读工作流 | - | 4 |
+| [module-diagram-planner](./module-diagram-planner/) | 面向功能模块理解的图谱选择与规划 | - | 2 |
 
 ## 技能分类
 
@@ -97,6 +101,7 @@ agent-skills/
 - **project-analyzer**: 系统化代码库分析（技术栈识别、项目结构、架构模式、依赖分析、代码质量、开发流程、风险评估、综合报告），适用于项目交接与新人上手
 - **sync-context**: 跨 Agent 上下文同步，通过 `CONTEXT.md` 交接协议实现（会话启动/结束协议、结构验证、时效检查、通过 `context/` 子目录渐进式披露）
 - **git-commit**: 面向真实仓库 diff 的 Git 暂存与详细提交说明（范围判断、staged/unstaged 检查、conventional commit 格式化、提交后核对）
+- **module-diagram-planner**: 在绘制 Mermaid 或设计文档图之前，为功能模块选择和规划图谱（边界、运行时流程、决策、配置、数据、错误、指标、测试）
 
 ## 快速开始
 
@@ -131,6 +136,9 @@ agent-skills/
 
 # 主动阅读与书籍分析
 /plugin marketplace add yutaoshao/agent-skills/how-to-read-a-book
+
+# 模块图谱规划
+/plugin marketplace add yutaoshao/agent-skills/module-diagram-planner
 ```
 
 ### 手动安装
@@ -143,6 +151,7 @@ cp -r agent-skills/paper-polish ~/.claude/skills/
 cp -r agent-skills/project-analyzer ~/.claude/skills/
 cp -r agent-skills/git-commit ~/.claude/skills/
 cp -r agent-skills/how-to-read-a-book ~/.claude/skills/
+cp -r agent-skills/module-diagram-planner ~/.claude/skills/
 ```
 
 每个技能模块的 `SKILL.md` 包含完整的使用指南和代码示例。

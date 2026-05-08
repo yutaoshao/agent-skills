@@ -45,6 +45,9 @@ agent-skills/
 │   └── scripts/             # Working tree summary helper
 ├── how-to-read-a-book/       # Active Reading & Book Analysis
 │   └── SKILL.md             # Inspectional, analytical, and syntopical reading workflows
+├── module-diagram-planner/  # Module Diagram Selection & Planning
+│   ├── SKILL.md             # Diagram planning workflow
+│   └── references/          # Diagram type catalog and selection heuristics
 └── [other-skills]/          # Extension Point
 ```
 
@@ -59,6 +62,7 @@ agent-skills/
 | [sync-context](./sync-context/) | Cross-agent context sync & handoff protocol | - | 3 |
 | [git-commit](./git-commit/) | Git staging and detailed conventional commit workflow | - | 6 |
 | [how-to-read-a-book](./how-to-read-a-book/) | Active reading workflows for books, papers, and long-form texts | - | 4 |
+| [module-diagram-planner](./module-diagram-planner/) | Diagram planning for feature and module understanding | - | 2 |
 
 ## Skill Categories
 
@@ -97,6 +101,7 @@ agent-skills/
 - **project-analyzer**: Systematic codebase analysis for project takeover and onboarding (tech stack, structure, architecture, dependencies, code quality, dev workflow, risk assessment, comprehensive report)
 - **sync-context**: Cross-agent context synchronization via `CONTEXT.md` handoff protocol (session init/end protocol, structure validation, freshness checks, progressive disclosure via `context/` subdirectory)
 - **git-commit**: Intentional staging and detailed commit drafting for real repository diffs (scope detection, staged/unstaged inspection, conventional commit formatting, post-commit verification)
+- **module-diagram-planner**: Diagram selection and planning for explaining a feature or module before drawing Mermaid or design-doc diagrams (boundaries, runtime flows, decisions, config, data, errors, metrics, tests)
 
 ## Quick Start
 
@@ -131,6 +136,9 @@ Or install individual skills:
 
 # Active reading and book analysis
 /plugin marketplace add yutaoshao/agent-skills/how-to-read-a-book
+
+# Module diagram planning
+/plugin marketplace add yutaoshao/agent-skills/module-diagram-planner
 ```
 
 ### Manual Installation
@@ -143,6 +151,7 @@ cp -r agent-skills/paper-polish ~/.claude/skills/
 cp -r agent-skills/project-analyzer ~/.claude/skills/
 cp -r agent-skills/git-commit ~/.claude/skills/
 cp -r agent-skills/how-to-read-a-book ~/.claude/skills/
+cp -r agent-skills/module-diagram-planner ~/.claude/skills/
 ```
 
 Each skill module's `SKILL.md` contains complete usage guides and code examples.
