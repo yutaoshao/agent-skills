@@ -1,0 +1,4 @@
+interface:
+  display_name: "Git Commit"
+  short_description: "Commit and auto-merge safe feature branches"
+  default_prompt: "Use $git-commit to stage my current changes, create a detailed conventional commit, and automatically merge back locally when safe."

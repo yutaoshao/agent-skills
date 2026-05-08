@@ -39,8 +39,8 @@ agent-skills/
 ├── sync-context/            # 跨 Agent 上下文同步与交接
 │   ├── SKILL.md             # 会话协议与验证
 │   └── scripts/             # 初始化、检查与注入脚本
-├── git-commit/              # Git 暂存与详细提交说明
-│   ├── SKILL.md             # 提交流程与暂存规则
+├── git-commit/              # Git 暂存、提交说明与本地合并回主分支
+│   ├── SKILL.md             # 提交流程、暂存规则与本地合并回主分支
 │   ├── references/          # commit type、scope 与 body 规范
 │   └── scripts/             # 工作区变更摘要脚本
 ├── how-to-read-a-book/       # 主动阅读与书籍分析
@@ -60,7 +60,7 @@ agent-skills/
 | [paper-polish](./paper-polish/) | 学术 LaTeX 论文润色工作流 | - | 6 |
 | [project-analyzer](./project-analyzer/) | 代码库分析与开发者上手 | - | 8 |
 | [sync-context](./sync-context/) | 跨 Agent 上下文同步与交接协议 | - | 3 |
-| [git-commit](./git-commit/) | Git 暂存与详细 conventional commit 工作流 | - | 6 |
+| [git-commit](./git-commit/) | Git 暂存、详细 conventional commit 与安全本地合并回主分支工作流 | - | 6 |
 | [how-to-read-a-book](./how-to-read-a-book/) | 面向书籍、论文与长文的主动阅读工作流 | - | 4 |
 | [module-diagram-planner](./module-diagram-planner/) | 面向功能模块理解的图谱选择与规划 | - | 2 |
 
@@ -100,7 +100,7 @@ agent-skills/
 ### 开发者工具
 - **project-analyzer**: 系统化代码库分析（技术栈识别、项目结构、架构模式、依赖分析、代码质量、开发流程、风险评估、综合报告），适用于项目交接与新人上手
 - **sync-context**: 跨 Agent 上下文同步，通过 `CONTEXT.md` 交接协议实现（会话启动/结束协议、结构验证、时效检查、通过 `context/` 子目录渐进式披露）
-- **git-commit**: 面向真实仓库 diff 的 Git 暂存与详细提交说明（范围判断、staged/unstaged 检查、conventional commit 格式化、提交后核对）
+- **git-commit**: 面向真实仓库 diff 的 Git 暂存与详细提交说明（范围判断、staged/unstaged 检查、conventional commit 格式化、提交后核对、安全本地合并回主分支）
 - **module-diagram-planner**: 在绘制 Mermaid 或设计文档图之前，为功能模块选择和规划图谱（边界、运行时流程、决策、配置、数据、错误、指标、测试）
 
 ## 快速开始

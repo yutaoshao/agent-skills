@@ -1,11 +1,11 @@
 ---
 name: git-commit
-description: Stage cohesive repository changes and create detailed Git commits grounded in the real diff. Use when inspecting current git modifications, deciding what to stage, writing a conventional-commit style subject, and running non-interactive `git add` plus `git commit` with a precise multi-bullet body. Trigger on requests like "commit my changes", "write a detailed commit message", "stage and commit this work", or "make a conventional commit for the current diff".
+description: Stage cohesive repository changes, create detailed Git commits, and automatically merge safe local feature-branch commits back to main/master. Use when inspecting current git modifications, deciding what to stage, writing a conventional-commit style subject, running non-interactive `git add` plus `git commit`, or finishing a local feature branch. Trigger on requests like "commit my changes", "stage and commit this work", "make a conventional commit", "commit and merge back", or "finish this branch locally".
 ---
 
 # Git Commit
 
-Stage the right files and create a commit message that explains the real work without inventing behavior, validation, or scope.
+Stage the right files, create a commit message grounded in the real diff, and automatically merge the committed feature branch back into the local base branch when it is safe.
 
 ## Quick Start
 
@@ -14,6 +14,7 @@ Stage the right files and create a commit message that explains the real work wi
 3. Inspect the full diff for files that drive behavior, APIs, migrations, tests, or CI.
 4. Read [`references/commit-guidelines.md`](references/commit-guidelines.md) before finalizing the message.
 5. Stage the intended files, commit non-interactively, and verify the result with `git show --stat --oneline HEAD -1`.
+6. Unless the user explicitly asked for commit-only/no-merge, run the automatic local merge-back workflow below.
 
 ## Workflow
 
@@ -72,6 +73,34 @@ If the body needs a `BREAKING CHANGE:` paragraph, add one more `-m` block for it
 - Mention any remaining unstaged or untracked files that were intentionally left out.
 - If `git commit` fails, surface the real error and do not invent a fallback success path.
 
+### 7. Automatic Local Merge-Back Workflow
+
+Run this section after every successful commit unless the user explicitly asks for commit-only/no-merge. This workflow merges only when the current branch looks like a local feature branch and the working tree is clean after the commit.
+
+1. Record the feature branch and detect the base branch:
+   ```bash
+   FEATURE_BRANCH=$(git branch --show-current)
+   BASE_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's#^refs/remotes/origin/##')
+   if [ -z "$BASE_BRANCH" ]; then
+     git show-ref --verify --quiet refs/heads/main && BASE_BRANCH=main || BASE_BRANCH=master
+   fi
+   ```
+2. If `FEATURE_BRANCH` is empty because HEAD is detached, do not merge; report the commit and the detached HEAD state.
+3. If already on `main`, `master`, or the detected `BASE_BRANCH`, do not merge; report the commit on the current branch.
+4. If any staged, unstaged, or untracked changes remain after the commit, do not switch branches. Report the commit and ask the user to clean, stash, or explicitly include those changes.
+5. Run the relevant verification command before merging when one is known or was run during the task. Do not claim tests passed unless the command was actually run.
+6. Merge locally:
+   ```bash
+   git switch "$BASE_BRANCH"
+   git merge "$FEATURE_BRANCH"
+   ```
+7. If the user explicitly asked to sync with GitHub, push only the merged base branch:
+   ```bash
+   git push origin "$BASE_BRANCH"
+   ```
+
+Do not create a PR, push the feature branch, delete the feature branch, stash changes, or discard work unless the user explicitly asks.
+
 ## Decision Rules
 
 - Choose `feat` for new user-visible capability or new workflow support.
@@ -90,7 +119,8 @@ Produce a commit that matches the actual diff and tell the user:
 - the final commit subject,
 - the main bullet-point body themes,
 - the resulting commit hash,
-- and any remaining local changes not included in the commit.
+- any remaining local changes not included in the commit,
+- and whether automatic merge-back ran, skipped, or stopped for safety.
 
 ## Example Requests
 
@@ -98,3 +128,5 @@ Produce a commit that matches the actual diff and tell the user:
 - `Stage the files for this auth fix and create a conventional commit.`
 - `Write a thorough git commit for the staged diff only.`
 - `Inspect the repo changes and make one cohesive commit if appropriate.`
+- `Commit this branch and merge it back to main locally.`
+- `Commit only; do not merge.`

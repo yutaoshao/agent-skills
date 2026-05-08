@@ -39,8 +39,8 @@ agent-skills/
 ├── sync-context/            # Cross-Agent Context Sync & Handoff
 │   ├── SKILL.md             # Session protocol & validation
 │   └── scripts/             # Init, check & inject scripts
-├── git-commit/              # Git Staging & Detailed Commit Drafting
-│   ├── SKILL.md             # Commit workflow and staging rules
+├── git-commit/              # Git Staging, Commit Drafting & Merge-Back
+│   ├── SKILL.md             # Commit workflow, staging rules, and merge-back
 │   ├── references/          # Commit type, scope, and body guidelines
 │   └── scripts/             # Working tree summary helper
 ├── how-to-read-a-book/       # Active Reading & Book Analysis
@@ -60,7 +60,7 @@ agent-skills/
 | [paper-polish](./paper-polish/) | Academic LaTeX paper improvement workflows | - | 6 |
 | [project-analyzer](./project-analyzer/) | Codebase analysis & developer onboarding | - | 8 |
 | [sync-context](./sync-context/) | Cross-agent context sync & handoff protocol | - | 3 |
-| [git-commit](./git-commit/) | Git staging and detailed conventional commit workflow | - | 6 |
+| [git-commit](./git-commit/) | Git staging, detailed conventional commits, and safe local merge-back workflow | - | 6 |
 | [how-to-read-a-book](./how-to-read-a-book/) | Active reading workflows for books, papers, and long-form texts | - | 4 |
 | [module-diagram-planner](./module-diagram-planner/) | Diagram planning for feature and module understanding | - | 2 |
 
@@ -100,7 +100,7 @@ agent-skills/
 ### Developer Tools
 - **project-analyzer**: Systematic codebase analysis for project takeover and onboarding (tech stack, structure, architecture, dependencies, code quality, dev workflow, risk assessment, comprehensive report)
 - **sync-context**: Cross-agent context synchronization via `CONTEXT.md` handoff protocol (session init/end protocol, structure validation, freshness checks, progressive disclosure via `context/` subdirectory)
-- **git-commit**: Intentional staging and detailed commit drafting for real repository diffs (scope detection, staged/unstaged inspection, conventional commit formatting, post-commit verification)
+- **git-commit**: Intentional staging and detailed commit drafting for real repository diffs (scope detection, staged/unstaged inspection, conventional commit formatting, post-commit verification, safe local merge-back)
 - **module-diagram-planner**: Diagram selection and planning for explaining a feature or module before drawing Mermaid or design-doc diagrams (boundaries, runtime flows, decisions, config, data, errors, metrics, tests)
 
 ## Quick Start
