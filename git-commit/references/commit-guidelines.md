@@ -32,6 +32,13 @@ Keep the subject imperative and specific. Avoid trailing periods. Keep it under 
 
 Choose the dominant type. If the diff includes a little documentation or test maintenance alongside a feature or fix, keep the feature or fix type.
 
+## Commit Boundary Rules
+
+- Split by independently reviewable and revertible behavior, not by when the work happened.
+- Use multiple commits by default for different change types, unrelated subsystems, opportunistic fixes, or tests that verify different production changes.
+- Keep docs and tests with the production change they describe or verify.
+- Keep one commit only when the diff represents one coherent behavior change.
+
 ## Scope Selection
 
 - Use a scope only when one package, directory, feature area, or subsystem clearly dominates the diff.
@@ -67,7 +74,8 @@ Useful bullet patterns:
 
 - Default to committing the already staged set when staged and unstaged changes coexist.
 - Prefer explicit `git add <path>...` commands over `git add -A`.
-- Ask before bundling unrelated changes into one commit.
+- Ask before bundling changes whose commit boundaries are unclear.
+- Stage one boundary at a time when splitting multiple commits.
 - Avoid staging local environment files, secrets, transient editor files, or OS metadata unless the user clearly wants them committed.
 
 ## Example

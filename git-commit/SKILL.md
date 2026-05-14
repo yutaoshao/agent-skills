@@ -12,9 +12,10 @@ Stage the right files, create a commit message grounded in the real diff, and au
 1. Run `git rev-parse --show-toplevel` to confirm the target repository root.
 2. Run `python3 /absolute/path/to/git-commit/scripts/collect_commit_context.py`.
 3. Inspect the full diff for files that drive behavior, APIs, migrations, tests, or CI.
-4. Read [`references/commit-guidelines.md`](references/commit-guidelines.md) before finalizing the message.
-5. Stage the intended files, commit non-interactively, and verify the result with `git show --stat --oneline HEAD -1`.
-6. Unless the user explicitly asked for commit-only/no-merge, run the automatic local merge-back workflow below.
+4. Review commit boundaries and split obvious independent units before staging.
+5. Read [`references/commit-guidelines.md`](references/commit-guidelines.md) before finalizing each message.
+6. Stage and commit each intended unit non-interactively, then verify the result.
+7. Unless the user explicitly asked for commit-only/no-merge, run the automatic local merge-back workflow after the final intended commit.
 
 ## Workflow
 
@@ -22,11 +23,20 @@ Stage the right files, create a commit message grounded in the real diff, and au
 
 - Treat already staged files as the current commit scope unless the user explicitly asks to restage.
 - If nothing is staged, stage only the files that belong to the requested change.
-- Pause and ask the user before committing when the working tree mixes clearly unrelated changes.
+- Pause and ask the user before committing when the working tree mixes changes whose boundaries are unclear.
 - Leave unrelated user edits untouched; never clean the working tree or unstage files you did not touch.
 - Surface the real git error when there is nothing to commit; do not fabricate a fallback success path.
 
-### 2. Inspect Changes Deeply Enough
+### 2. Review Commit Boundaries
+
+- Before staging, classify the diff into independently reviewable and revertible units.
+- Split into multiple commits by default when the diff contains different change types, unrelated subsystems, opportunistic fixes, or tests that clearly belong to different production changes.
+- Keep docs and tests with the production change they describe or verify.
+- Keep one commit only when the staged or unstaged diff represents a single coherent behavior change.
+- Do not ask before splitting when boundaries are obvious and the user asked generally to commit changes.
+- Ask only when splitting would be ambiguous, require risky partial-hunk staging, or conflict with already staged user intent.
+
+### 3. Inspect Changes Deeply Enough
 
 - Use `scripts/collect_commit_context.py` for the high-level inventory of staged, unstaged, and untracked files.
 - Inspect full diffs for files that change runtime behavior, public APIs, migrations, tests, release metadata, or CI.
@@ -35,15 +45,16 @@ Stage the right files, create a commit message grounded in the real diff, and au
 - Check renames, deletions, and generated files explicitly before staging them.
 - Confirm whether tests were only modified or also executed; never claim a test run that did not happen.
 
-### 3. Choose Staging Strategy
+### 4. Choose Staging Strategy
 
 - Prefer explicit path-based `git add <path>...` over `git add -A`.
 - Use `git add -A` only when the user explicitly wants every current change and the diff is cohesive.
 - Do not stage editor junk, secrets, local env files, or incidental OS files unless the user clearly intends to commit them.
 - Preserve partial staging boundaries unless the user asks to restage the whole file.
 - If the repo has staged files plus additional unstaged work, commit the staged set by default and mention the remaining local changes afterward.
+- When splitting commits, stage one boundary at a time, commit it, then stage the next boundary.
 
-### 4. Write the Commit Message
+### 5. Write the Commit Message
 
 - Read [`references/commit-guidelines.md`](references/commit-guidelines.md) before choosing the final subject and body.
 - Use a conventional commit subject when the change type is inferable.
@@ -52,7 +63,7 @@ Stage the right files, create a commit message grounded in the real diff, and au
 - Mention tests only when they were actually added, updated, or run.
 - Add migration or compatibility notes when the diff changes interfaces, contracts, or behavior in a breaking way.
 
-### 5. Commit Non-Interactively
+### 6. Commit Non-Interactively
 
 Use repeated `-m` flags so the commit can be reproduced from the terminal without opening an editor.
 
@@ -66,16 +77,17 @@ git commit \
 
 If the body needs a `BREAKING CHANGE:` paragraph, add one more `-m` block for it.
 
-### 6. Verify
+### 7. Verify
 
-- Run `git show --stat --oneline HEAD -1` after committing.
-- Report the commit hash and subject back to the user.
+- Run `git show --stat --oneline HEAD -1` after each commit.
+- If you create multiple commits, verify the final range with `git log --oneline` or `git show --stat --oneline HEAD -N`.
+- Report each commit hash and subject back to the user.
 - Mention any remaining unstaged or untracked files that were intentionally left out.
 - If `git commit` fails, surface the real error and do not invent a fallback success path.
 
-### 7. Automatic Local Merge-Back Workflow
+### 8. Automatic Local Merge-Back Workflow
 
-Run this section after every successful commit unless the user explicitly asks for commit-only/no-merge. This workflow merges only when the current branch looks like a local feature branch and the working tree is clean after the commit.
+Run this section after the final intended commit unless the user explicitly asks for commit-only/no-merge. This workflow merges only when the current branch looks like a local feature branch and the working tree is clean after all selected commits.
 
 1. Record the feature branch and detect the base branch:
    ```bash
@@ -109,16 +121,16 @@ Do not create a PR, push the feature branch, delete the feature branch, stash ch
 - Choose `docs`, `test`, `ci`, `build`, `perf`, `style`, `chore`, or `revert` when those are the dominant change types.
 - Use a scope only when one subsystem, package, feature, or directory clearly dominates the diff.
 - Omit the scope when the change spans several areas equally.
-- Prefer one well-scoped commit over one omnibus commit when the diff mixes unrelated work.
+- Prefer multiple focused commits over one omnibus commit when the diff has independent review or rollback boundaries.
 
 ## Output Expectations
 
 Produce a commit that matches the actual diff and tell the user:
 
 - what was staged,
-- the final commit subject,
-- the main bullet-point body themes,
-- the resulting commit hash,
+- the final commit subject(s),
+- the main bullet-point body themes for each commit,
+- the resulting commit hash(es),
 - any remaining local changes not included in the commit,
 - and whether automatic merge-back ran, skipped, or stopped for safety.
 
