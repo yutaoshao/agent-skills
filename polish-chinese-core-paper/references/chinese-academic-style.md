@@ -18,10 +18,11 @@ Apply changes in this order:
 
 1. Preserve factual meaning and claim strength.
 2. Make the research question, reasoning, and evidence traceable.
-3. Give each paragraph a clear rhetorical job.
-4. Make subjects, references, conditions, and logical relations explicit.
-5. Remove redundancy and awkwardness.
-6. Refine rhythm and stylistic variety.
+3. Ensure that every sentence carries necessary information in the location where readers need it.
+4. Give each paragraph a clear rhetorical job.
+5. Make subjects, references, conditions, and logical relations explicit.
+6. Remove redundancy and awkwardness.
+7. Refine rhythm and stylistic variety.
 
 Do not trade a precise technical expression for a shorter but broader synonym. Do not manufacture variety by rotating terms that should remain consistent.
 
@@ -40,6 +41,7 @@ Do not trade a precise technical expression for a shorter but broader synonym. D
 - Present purpose, method, principal evidence, and conclusion when the article type and journal call for them.
 - Keep conditions and comparison scope attached to reported results.
 - Avoid background that does not help interpret the research problem.
+- State the evaluation setting directly. Do not force every limitation into the abstract, but include a limitation when omitting it would materially distort the principal finding.
 - Preserve numbers exactly and do not add a “representative” result from memory.
 - Follow verified rules for length, person, abbreviations, citations, and structured headings.
 
@@ -82,6 +84,16 @@ Test paragraph flow by asking:
 5. What information prepares the next paragraph?
 
 ## Sentence Construction
+
+### Make Each Sentence Earn Its Place
+
+- Identify the unique fact, reasoning step, evidence link, qualification, or navigation function supplied by the sentence.
+- Delete or merge a sentence when it contributes no unique necessary information.
+- Move a necessary sentence when its function belongs to another paragraph or section.
+- Rebalance wording or position when a secondary point receives more emphasis than the main claim, or when a material boundary is too obscure.
+- Judge necessity in context. Do not delete limitations or negative results merely because they are unfavorable.
+
+Use `sentence-function-audit.md` for an exhaustive `standard` or `deep` review.
 
 ### Make the Actor and Object Clear
 

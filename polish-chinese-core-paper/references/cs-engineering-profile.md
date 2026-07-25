@@ -23,9 +23,18 @@ Flag a break in the chain instead of filling it with invented content. Common br
 - Name the research object and technical contribution precisely; remove generic claims such as “研究与实现” when they add no scope.
 - Keep the abstract self-contained according to the target journal's rules.
 - Express the problem, method, evaluation setting, principal evidence, and bounded conclusion when the manuscript supplies them.
+- Distinguish the evaluation setting from a limitation statement. Name a simulation, benchmark, prototype, or physical platform directly; do not use an audit-style negative sentence unless the absence itself is essential to interpreting the claim.
 - Preserve exact metric names and comparison conditions.
 - Include quantitative results only when they appear in the verified body or source data.
 - Avoid citations, undefined abbreviations, equations, and unsupported novelty claims unless the target journal permits or requires them.
+
+## Evidence-Boundary Placement
+
+- Keep the evaluation setting visible in the abstract whenever it limits the reported evidence.
+- State missing physical, field, online, longitudinal, or external validation explicitly in the discussion or limitations section when it constrains applicability.
+- Qualify the abstract explicitly when the missing validation directly conflicts with a deployment, real-time, robustness, safety, or generalization claim.
+- Do not infer real-system performance from simulation results, or empirical mechanism from an observed performance difference.
+- Avoid repeating the same boundary sentence in the abstract, discussion, and conclusion. Use each location for a distinct purpose: scope the evidence, interpret the limitation, and motivate grounded next work.
 
 ## Introduction
 
@@ -65,6 +74,7 @@ Do not repair missing reproducibility details by guessing common defaults. Raise
 - Compare findings with relevant prior work without citation dumping.
 - Separate empirical explanation from demonstrated mechanism.
 - State limitations in terms of affected populations, conditions, datasets, resources, or deployment settings.
+- Preserve necessary validation boundaries while choosing a location and emphasis proportionate to their effect on the paper's main claim.
 - Keep future work grounded in unresolved limitations, not a generic list of possible extensions.
 - End at the generality supported by the evaluated conditions.
 

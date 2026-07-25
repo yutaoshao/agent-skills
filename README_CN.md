@@ -34,8 +34,8 @@ agent-skills/
 │   ├── SKILL.md             # 6 个模块化工作流
 │   └── references/          # 模式目录与检查清单
 ├── polish-chinese-core-paper/ # 中文核心期刊论文润色
-│   ├── SKILL.md             # 学术诚信优先、面向目标期刊的润色流程
-│   ├── references/          # 中文表达、学科、期刊 profile 与审校指南
+│   ├── SKILL.md             # 逐句审查、学术诚信优先的实质编辑流程
+│   ├── references/          # 必要性、位置、表达、诚信与期刊审校指南
 │   └── scripts/             # 中文学术表达启发式诊断脚本
 ├── project-analyzer/        # 代码库分析与上手
 │   ├── SKILL.md             # 8 个模块化工作流
@@ -62,7 +62,7 @@ agent-skills/
 | [glm-skills](./glm-skills/) | 智谱 GLM AI 能力集合 | z-ai-web-dev-sdk | 12 |
 | [paper-writer](./paper-writer/) | 学术论文全流程写作（从代码到投稿） | - | 10 |
 | [paper-polish](./paper-polish/) | 学术 LaTeX 论文润色工作流 | - | 6 |
-| [polish-chinese-core-paper](./polish-chinese-core-paper/) | 面向目标期刊并保护学术事实的中文论文润色工作流 | - | 6 |
+| [polish-chinese-core-paper](./polish-chinese-core-paper/) | 兼顾逐句内容取舍、目标期刊与学术诚信的中文论文编辑工作流 | - | 7 |
 | [project-analyzer](./project-analyzer/) | 代码库分析与开发者上手 | - | 8 |
 | [sync-context](./sync-context/) | 跨 Agent 上下文同步与交接协议 | - | 3 |
 | [git-commit](./git-commit/) | Git 暂存、详细 conventional commit 与安全本地合并回主分支工作流 | - | 6 |
@@ -98,7 +98,7 @@ agent-skills/
 ### 学术写作
 - **paper-writer**: 学术论文全流程写作，从项目源代码到可投稿 LaTeX 论文（10 阶段：代码分析、文献综述、论文结构、章节写作、图表生成、引用管理、去AI润色、LaTeX编译、投稿审查、返修重投）
 - **paper-polish**: 自动化 LaTeX 论文润色（去 AI 痕迹、引用扩展、图表验证、编译清理、全面质量审查）
-- **polish-chinese-core-paper**: 面向中文核心期刊投稿的论文润色，提供轻度、标准、深度三档编辑，保护数据与论证边界，并支持计算机与工程学科规则、可追溯期刊 profile 和作者待确认项
+- **polish-chinese-core-paper**: 面向中文核心期刊投稿的实质编辑；标准与深度模式逐句判断功能、必要性、篇章位置和强调程度，同时保护数据与论证边界，并支持计算机与工程学科规则、可追溯期刊 profile 和作者待确认项
 
 ### 阅读与学习
 - **how-to-read-a-book**: 受 *How to Read a Book* / 《如何阅读一本书》启发的主动阅读工作流（检视阅读、分析阅读、主题阅读比较、按体裁生成阅读产物）

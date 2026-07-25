@@ -34,8 +34,8 @@ agent-skills/
 │   ├── SKILL.md             # 6 modular workflows
 │   └── references/          # Pattern catalogs & checklists
 ├── polish-chinese-core-paper/ # Chinese Core Journal Paper Polish
-│   ├── SKILL.md             # Integrity-first, journal-aware polish workflow
-│   ├── references/          # Style, discipline, journal-profile & review guides
+│   ├── SKILL.md             # Sentence-level, integrity-first editorial workflow
+│   ├── references/          # Necessity, placement, style, integrity & journal guides
 │   └── scripts/             # Heuristic Chinese style diagnostics
 ├── project-analyzer/        # Codebase Analysis & Onboarding
 │   ├── SKILL.md             # 8 modular workflows
@@ -62,7 +62,7 @@ agent-skills/
 | [glm-skills](./glm-skills/) | GLM AI capabilities collection | z-ai-web-dev-sdk | 12 |
 | [paper-writer](./paper-writer/) | Full lifecycle academic paper writing (code to submission) | - | 10 |
 | [paper-polish](./paper-polish/) | Academic LaTeX paper improvement workflows | - | 6 |
-| [polish-chinese-core-paper](./polish-chinese-core-paper/) | Journal-aware Chinese academic polishing with integrity safeguards | - | 6 |
+| [polish-chinese-core-paper](./polish-chinese-core-paper/) | Sentence-level Chinese academic editing with journal and integrity safeguards | - | 7 |
 | [project-analyzer](./project-analyzer/) | Codebase analysis & developer onboarding | - | 8 |
 | [sync-context](./sync-context/) | Cross-agent context sync & handoff protocol | - | 3 |
 | [git-commit](./git-commit/) | Git staging, detailed conventional commits, and safe local merge-back workflow | - | 6 |
@@ -98,7 +98,7 @@ agent-skills/
 ### Academic Writing
 - **paper-writer**: Full lifecycle academic paper writing from project source code to submission-ready LaTeX (10 stages: code analysis, literature review, structure, drafting, figures, citations, de-AI polish, LaTeX compilation, submission review, revision)
 - **paper-polish**: Automated LaTeX paper improvement (de-AI polishing, citation expansion, figure/table verification, compilation cleanup, full quality review)
-- **polish-chinese-core-paper**: Chinese academic manuscript polishing for core-journal submission, with light/standard/deep editing, protected evidence anchors, computer science and engineering guidance, verified journal profiles, and explicit author queries
+- **polish-chinese-core-paper**: Chinese academic manuscript editing for core-journal submission, with exhaustive sentence-function, necessity, placement, and emphasis audits in standard/deep work; protected evidence anchors; computer science and engineering guidance; verified journal profiles; and explicit author queries
 
 ### Reading & Learning
 - **how-to-read-a-book**: Active reading workflows inspired by *How to Read a Book* / 《如何阅读一本书》 (inspectional reading, analytical reading, syntopical comparison, genre-specific reading artifacts)

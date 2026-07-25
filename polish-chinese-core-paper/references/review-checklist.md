@@ -19,6 +19,7 @@ Use this checklist for standard, deep, and submission-oriented polishing. Report
 - [ ] Select light, standard, or deep editing.
 - [ ] Record requested output and revision visibility.
 - [ ] Inventory integrity anchors.
+- [ ] Inventory protected propositions that may be rewritten, merged, or relocated.
 - [ ] Identify missing context that makes a requested rewrite unsafe.
 
 ## Structure and Argument
@@ -27,6 +28,11 @@ Use this checklist for standard, deep, and submission-oriented polishing. Report
 - [ ] The research problem and gap are distinguishable.
 - [ ] Each contribution maps to supplied evidence.
 - [ ] Each section and paragraph has an identifiable rhetorical job.
+- [ ] Every sentence or proposition-bearing unit has an identifiable necessary function.
+- [ ] Every sentence passes the deletion test, or is merged, deleted, or queried.
+- [ ] Repeated propositions serve distinct reader needs rather than duplicating wording.
+- [ ] Necessary information appears in the section where readers need it.
+- [ ] Wording and high-emphasis positions give each proposition proportionate weight.
 - [ ] Paragraph order reflects the actual reasoning or procedure.
 - [ ] Results are distinguishable from interpretation.
 - [ ] Limitations remain visible and proportionate.
@@ -52,6 +58,7 @@ Use this checklist for standard, deep, and submission-oriented polishing. Report
 - [ ] Citation identifiers and claim attachment are preserved.
 - [ ] New references, if any, are verified from authoritative metadata.
 - [ ] Equations, figures, tables, captions, and cross-references remain aligned.
+- [ ] Every protected proposition remains traceable, correctly scoped, and sufficiently visible after moves, merges, or deletions.
 - [ ] Funding, ethics, conflicts, data, authorship, and affiliations remain factual.
 - [ ] Every unresolved integrity issue appears in the author-query list.
 
@@ -91,9 +98,16 @@ Use this checklist for standard, deep, and submission-oriented polishing. Report
 
 ## 主要修改
 
-| 位置 | 严重度 | 类型 | 修改说明 | 是否需作者确认 |
-|---|---|---|---|---|
-| | | | | |
+| 位置 | 严重度 | 句子功能 | 处置 | 修改说明 | 是否需作者确认 |
+|---|---|---|---|---|---|
+| | | | keep / rewrite / merge / move / delete / query | | |
+
+## 逐句审查摘要
+
+- 审查范围：
+- 已审查单元数：
+- 保留 / 改写 / 合并 / 移动 / 删除 / 待确认：
+- 仅在工作记录中保留、未逐项交付的低风险判断：
 
 ## 作者待确认项
 
@@ -112,6 +126,7 @@ Use this checklist for standard, deep, and submission-oriented polishing. Report
 - 已比较：
 - 无法验证：
 - 新增或删除的引用：
+- 移动、合并或删除的受保护命题：
 - 数据、公式或结论风险：
 
 ## 执行检查

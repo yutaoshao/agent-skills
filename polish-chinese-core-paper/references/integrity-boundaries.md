@@ -17,6 +17,18 @@ Record the anchors that appear in the input before polishing:
 
 Do not correct a suspected anchor from intuition. Keep the source wording and raise an author query unless the manuscript, source data, or a verified reference resolves the discrepancy.
 
+## Preserve Information Without Freezing Prose
+
+Protect different anchors at the appropriate level:
+
+- Preserve atomic anchors such as numbers, signs, units, symbols, names, comparison directions, citation identifiers, and claim strength exactly.
+- Preserve proposition-level anchors such as assumptions, limitations, negative results, scope, and conclusions in meaning and adequate visibility across the manuscript.
+- Permit rewriting, merging, or relocation when the protected proposition remains traceable, correctly scoped, and proportionately emphasized.
+- Do not interpret “preserve” as “retain the original sentence in the original section.” A factually correct sentence may still be redundant, misplaced, or rhetorically disproportionate.
+- Do not interpret relocation as permission to hide an unfavorable result or material limitation. Keep it where the intended reader can evaluate its effect on the claim.
+
+Assign a stable identifier to a protected proposition before moving or merging it, then record its revised location in the sentence audit.
+
 ## Claim-Strength Ladder
 
 Keep claims on their supported rung:
@@ -35,7 +47,7 @@ Treat these edits as high risk:
 - changing “表明” to “证明”;
 - changing “在所比较方法中最优” to “达到最优水平”;
 - changing “可用于” to “能够解决”;
-- deleting a limitation, boundary condition, or negative result;
+- deleting a limitation, boundary condition, or negative result, or relocating it so that its effect on interpretation becomes obscure;
 - turning a hypothesis or future direction into a completed contribution.
 
 ## Numbers and Statistical Language
@@ -65,6 +77,7 @@ Apply local grammar, punctuation, and unambiguous redundancy fixes without confi
 - merging claims supported by different evidence;
 - deleting content that may carry disciplinary or legal significance;
 - reordering paragraphs in a way that changes argumentative emphasis;
+- moving a protected proposition between high- and low-emphasis locations when the move changes how readers assess the main claim;
 - replacing a technical term with a near-synonym;
 - changing an ambiguous numerical or citation statement;
 - adding any factual content not present in the supplied sources.
@@ -78,8 +91,10 @@ Perform these checks after polishing:
 1. Compare all original and revised numerical tokens, including numbers inside captions and notes.
 2. Compare citation identifiers and their sentence-level attachment.
 3. Compare equation, figure, table, and section references.
-4. Re-read every change containing causal verbs, superlatives, novelty claims, limitations, or generalizations.
-5. Confirm that no paragraph now claims evidence from a different experiment, sample, baseline, or source.
-6. List any anchor that could not be checked because the source data or reference was unavailable.
+4. Trace every protected proposition from its source location to its revised location.
+5. Re-read every change containing causal verbs, superlatives, novelty claims, limitations, negative results, or generalizations.
+6. Confirm that no paragraph now claims evidence from a different experiment, sample, baseline, or source.
+7. Confirm that no necessary proposition became misleadingly prominent or obscure solely because of its new position.
+8. List any anchor that could not be checked because the source data or reference was unavailable.
 
 Report completion honestly: “anchors compared with the supplied manuscript” is valid; “facts verified” is not valid unless independent evidence was actually checked.
