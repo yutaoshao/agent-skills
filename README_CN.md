@@ -111,6 +111,26 @@ agent-skills/
 
 ## 快速开始
 
+### 在 Codex 中安装
+
+使用 Codex 内置的 `$skill-installer`，可以直接从 GitHub 安装单个技能。例如：
+
+```text
+$skill-installer https://github.com/yutaoshao/agent-skills/tree/main/polish-chinese-core-paper
+```
+
+将 URL 末尾替换为本仓库中的其他技能目录即可安装相应技能。Codex 会自动检测新安装的技能；如果技能没有出现，请重启 Codex。
+
+如需手动安装到用户范围，请克隆仓库并将所需技能复制到 `~/.agents/skills`：
+
+```bash
+git clone https://github.com/yutaoshao/agent-skills.git
+mkdir -p ~/.agents/skills
+cp -R agent-skills/polish-chinese-core-paper ~/.agents/skills/
+```
+
+如果技能只应在某个仓库内使用，请改为复制到该仓库的 `.agents/skills/` 目录。
+
 ### 通过 Claude Code 插件市场安装
 
 安装整个仓库（所有技能）：
@@ -150,7 +170,7 @@ agent-skills/
 /plugin marketplace add yutaoshao/agent-skills/module-diagram-planner
 ```
 
-### 手动安装
+### 为 Claude Code 手动安装
 
 克隆仓库并将所需技能复制到 Claude skills 目录：
 
