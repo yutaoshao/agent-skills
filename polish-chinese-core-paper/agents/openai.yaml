@@ -1,0 +1,4 @@
+interface:
+  display_name: "中文核心论文润色"
+  short_description: "按目标期刊规范润色中文学术论文并保护事实、数据与引文"
+  default_prompt: "Use $polish-chinese-core-paper to polish this Chinese manuscript for its target core journal while preserving claims, data, equations, and citations."
