@@ -1,310 +1,200 @@
-# Architecture Patterns Catalog
-
-A reference for identifying common architecture and design patterns in unfamiliar codebases. Each pattern includes file structure signatures, naming conventions, and code-level indicators.
-
----
-
-## 1. Architectural Styles
-
-### 1.1 Monolith
-
-**Signatures:**
-- Single `package.json` / `pom.xml` / `go.mod` at root
-- One `Dockerfile` producing one deployable artifact
-- Shared database configuration (single connection string)
-- All features in one `src/` directory
-
-**Directory pattern:**
-```
-src/
-├── controllers/    (or routes/, handlers/)
-├── services/       (or business/, domain/)
-├── models/         (or entities/, schemas/)
-├── middleware/
-├── utils/          (or helpers/, lib/)
-└── config/
-```
-
-### 1.2 Modular Monolith
-
-**Signatures:**
-- Single deployment, but code organized by business domain
-- Each module has its own models, services, controllers
-- Module-level `index.ts` or `__init__.py` that exports a public API
-- Inter-module communication via explicit interfaces, not direct imports
-
-**Directory pattern:**
-```
-src/
-├── modules/
-│   ├── auth/
-│   │   ├── controllers/
-│   │   ├── services/
-│   │   ├── models/
-│   │   └── index.ts        # Public API
-│   ├── billing/
-│   │   ├── controllers/
-│   │   ├── services/
-│   │   ├── models/
-│   │   └── index.ts
-│   └── notifications/
-└── shared/                  # Cross-cutting concerns
-```
-
-### 1.3 Microservices
-
-**Signatures:**
-- Multiple `Dockerfile` files or `docker-compose.yml` with many services
-- Separate package manifests per service
-- API gateway or service mesh configuration
-- Message broker config (RabbitMQ, Kafka, NATS)
-- Service discovery configuration
-- Each service has its own database connection
-
-**Directory pattern:**
-```
-services/
-├── user-service/
-│   ├── src/
-│   ├── Dockerfile
-│   └── package.json
-├── order-service/
-│   ├── src/
-│   ├── Dockerfile
-│   └── package.json
-├── api-gateway/
-└── docker-compose.yml
-```
-
-### 1.4 Monorepo (Multi-package)
-
-**Signatures:**
-- `packages/` or `apps/` directory with multiple sub-projects
-- Workspace configuration (`pnpm-workspace.yaml`, `lerna.json`, `turbo.json`, `nx.json`)
-- Shared packages referenced as workspace dependencies
-- Root-level tooling config with per-package overrides
-
-**Directory pattern:**
-```
-packages/
-├── web/              # Frontend app
-├── api/              # Backend API
-├── shared/           # Shared utilities
-├── ui/               # Component library
-└── config/           # Shared configurations
-turbo.json            # or nx.json
-pnpm-workspace.yaml
-```
-
-### 1.5 Serverless
-
-**Signatures:**
-- `serverless.yml`, `template.yaml` (SAM), or `cdk.ts` / `cdk.py`
-- Function-per-file organization
-- Event source mappings (API Gateway, S3, SQS triggers)
-- No long-running server process
-- Cold start optimization patterns
-
-**Directory pattern:**
-```
-functions/
-├── createUser/
-│   ├── handler.ts
-│   └── event.json
-├── processOrder/
-│   ├── handler.ts
-│   └── event.json
-serverless.yml
-```
-
----
-
-## 2. Layering Patterns
-
-### 2.1 MVC (Model-View-Controller)
-
-**Identification:**
-- Directories named `models/`, `views/`, `controllers/` (or `templates/`, `handlers/`)
-- Controller files import from model files
-- View templates reference model data
-- Common in: Rails, Django, Spring MVC, Laravel, Express
-
-**Code indicators:**
-```
-// Controller imports model
-import { User } from '../models/User';
-// Controller renders view
-res.render('users/index', { users });
-```
-
-### 2.2 Clean Architecture / Hexagonal (Ports & Adapters)
-
-**Identification:**
-- Directories named `domain/`, `application/`, `infrastructure/`, `adapters/`, `ports/`
-- Domain layer has zero external imports (no framework, no ORM)
-- Repository interfaces defined in domain, implemented in infrastructure
-- Use case classes with single `execute()` method
-
-**Directory pattern:**
-```
-src/
-├── domain/
-│   ├── entities/
-│   ├── repositories/    # Interfaces only
-│   └── value-objects/
-├── application/
-│   ├── use-cases/
-│   └── services/
-├── infrastructure/
-│   ├── database/        # Repository implementations
-│   ├── http/
-│   └── messaging/
-└── adapters/
-    ├── controllers/
-    └── presenters/
-```
-
-### 2.3 CQRS (Command Query Responsibility Segregation)
-
-**Identification:**
-- Separate `commands/` and `queries/` directories
-- Different models for read and write operations
-- Command handlers and query handlers as distinct classes
-- Often paired with Event Sourcing
-
-**Code indicators:**
-- Classes named `*Command`, `*Query`, `*CommandHandler`, `*QueryHandler`
-- Separate read models / projections
-
-### 2.4 Event-Driven Architecture
-
-**Identification:**
-- Event emitters, event bus, or message broker integration
-- Files named `*Event`, `*Listener`, `*Subscriber`, `*Handler`
-- Event schema definitions (Avro, Protobuf, JSON Schema)
-- Dead letter queue configuration
-
-**Code indicators:**
-```
-// Event definition
-class OrderCreatedEvent { ... }
-// Event handler
-@EventHandler(OrderCreatedEvent)
-class SendConfirmationEmail { ... }
-```
-
----
-
-## 3. Common Design Patterns
-
-### 3.1 Repository Pattern
-
-**Identification:**
-- Files named `*Repository`, `*Repo`, `*Store`, `*DAO`
-- Interface defining CRUD operations
-- Implementation wrapping ORM or database client
-- Services import repositories, not ORM directly
-
-### 3.2 Dependency Injection
-
-**Identification:**
-- Constructor parameters for dependencies (not direct imports)
-- IoC container configuration (`inversify`, `tsyringe`, Spring `@Autowired`, Nest `@Injectable()`)
-- Module files that wire dependencies together
-- Factory functions that accept dependencies as parameters
-
-### 3.3 Middleware / Pipeline Pattern
-
-**Identification:**
-- Chained function calls (`app.use(...)`)
-- Files in `middleware/` directory
-- Decorator patterns (`@UseGuard()`, `@Middleware()`)
-- Pipe-like composition of request handlers
-
-### 3.4 Strategy Pattern
-
-**Identification:**
-- Interface with multiple implementations selected at runtime
-- Configuration-driven behavior switching
-- Factory that returns different implementations based on input
-- Example: payment processors, notification channels, export formats
-
-### 3.5 Observer / Pub-Sub
-
-**Identification:**
-- EventEmitter usage
-- `on()` / `emit()` patterns
-- Webhook registrations
-- React-like hooks system
-
-### 3.6 Facade Pattern
-
-**Identification:**
-- Single class/module that simplifies a complex subsystem
-- `index.ts` / `__init__.py` that re-exports a clean API
-- Service classes that orchestrate multiple lower-level operations
-- SDK or client libraries wrapping complex APIs
-
----
-
-## 4. Frontend-Specific Patterns
-
-### 4.1 Component Architecture (React/Vue/Svelte)
-
-**Identification:**
-- Components organized by feature or by type
-- Shared UI components in `components/ui/` or `components/common/`
-- Page components in `pages/` or `views/`
-- Layout components wrapping page content
-
-### 4.2 State Management Patterns
-
-| Pattern | Signatures |
-|---------|-----------|
-| Redux / Zustand | `store/`, `slices/`, `reducers/`, `actions/` |
-| Context + Hooks | `contexts/`, `providers/`, `useX` custom hooks |
-| Server State | React Query / SWR / TanStack Query usage |
-| Atomic State | Jotai (`atoms/`), Recoil (`selectors/`) |
-
-### 4.3 API Layer Patterns
-
-| Pattern | Signatures |
-|---------|-----------|
-| Service Layer | `services/api.ts`, `services/userService.ts` |
-| API Client | `lib/api-client.ts` with axios/fetch wrapper |
-| Generated Client | OpenAPI codegen, tRPC, GraphQL codegen |
-| Hook-based | `hooks/useUsers.ts` wrapping data fetching |
-
----
-
-## 5. API Design Patterns
-
-### 5.1 RESTful API
-
-**Identification:**
-- Resource-based URL patterns (`/users`, `/users/:id`, `/users/:id/orders`)
-- HTTP method semantics (GET, POST, PUT, PATCH, DELETE)
-- Status code conventions
-- HATEOAS links (rare but distinctive)
-
-### 5.2 GraphQL
-
-**Identification:**
-- `.graphql` or `.gql` schema files
-- Resolver directories
-- Single `/graphql` endpoint
-- Type definitions with Query/Mutation/Subscription
-
-### 5.3 gRPC
-
-**Identification:**
-- `.proto` files with service and message definitions
-- Generated client/server stubs
-- Binary protocol configuration
-
-### 5.4 tRPC
-
-**Identification:**
-- Router definitions with `publicProcedure` / `protectedProcedure`
-- End-to-end type safety without schema files
-- Shared types between client and server
+# Architecture Pattern Vocabulary
+
+Use this catalog only after mapping concrete responsibilities and one real
+journey. Pattern names summarize observed relationships; they do not prove them.
+
+## Contents
+
+- [Evidence Guardrails](#evidence-guardrails)
+- [Describe Independent Dimensions](#describe-independent-dimensions)
+- [Delivery Topologies](#delivery-topologies)
+- [Runtime Interaction Styles](#runtime-interaction-styles)
+- [Code Organization Patterns](#code-organization-patterns)
+- [Recurring Design Patterns](#recurring-design-patterns)
+- [Interface Patterns](#interface-patterns)
+- [Reporting Language](#reporting-language)
+
+## Evidence Guardrails
+
+Directory names, manifests, Dockerfiles, decorators, and naming conventions are
+candidate signals. Before assigning a pattern label, corroborate it with evidence
+appropriate to the claim:
+
+- composition or bootstrap wiring;
+- actual dependency direction;
+- runtime calls, events, jobs, or library consumers;
+- deployment units and release configuration;
+- data and state ownership;
+- both sides of a public boundary when both are in scope; otherwise separate the
+  verified local contract from unknown remote consumption or behavior;
+- the representative journey traced in the onboarding report.
+
+Allow multiple patterns by component. A monorepo can contain a modular monolith,
+several services, shared libraries, and scheduled jobs at the same time.
+
+Use this component map before applying labels:
+
+| Component | Responsibility | Public boundary | Collaborators | Owned state | State | Evidence |
+|---|---|---|---|---|---|---|
+| [Observed component] | [What it contributes] | [API/event/export/etc.] | [Concrete relationships] | [DB/cache/file/artifact/etc.] | Verified / Inferred / Unknown | [Locations] |
+
+## Describe Independent Dimensions
+
+Do not collapse these dimensions into one architecture label:
+
+| Dimension | Examples | Evidence to inspect |
+|---|---|---|
+| Repository topology | Single package, workspace, nested projects | Manifests, workspace config, package boundaries |
+| Delivery topology | Library, one deployable, several deployables, functions, jobs, static site | Build and deployment configuration, artifacts, release workflow |
+| Runtime interaction | Request-response, command, library call, event, stream, batch DAG | Entry registrations, call sites, schemas, consumers, orchestrators |
+| Code organization | Layered, feature-oriented, ports and adapters, component tree, pipeline | Imports, interfaces, composition, representative flow |
+| State ownership | Process, browser, database, cache, filesystem, remote service, artifact or IaC state | Read/write sites, schemas, clients, transaction or ownership boundaries |
+
+## Delivery Topologies
+
+### Single Deployable
+
+Candidate signals include one build artifact or one deployed process. A single
+manifest or `src/` directory is not enough.
+
+Required corroboration:
+
+- build or packaging output;
+- deployment or startup configuration;
+- runtime composition showing the relevant components in one unit.
+
+Counterevidence includes independently released packages, separately deployed
+workers, functions, or services.
+
+### Modular Monolith
+
+Candidate signals include one deployable with domain responsibilities exposed
+through explicit internal contracts.
+
+Required corroboration:
+
+- one delivery unit;
+- demonstrated module boundaries and dependency direction;
+- controlled cross-module access or public internal interfaces.
+
+Do not conclude this from a `modules/` directory or barrel exports alone.
+
+### Multiple Services Or Deployables
+
+Candidate signals include independently built or released processes, services,
+workers, or applications.
+
+Required corroboration:
+
+- independent startup or deployment units;
+- network, event, or artifact contracts between units;
+- data ownership or operational independence where claimed.
+
+Several Dockerfiles or package directories can also be build tooling, examples,
+or one coordinated deployment, so they are not sufficient proof of microservices.
+
+### Functions, Jobs, Or Serverless Units
+
+Candidate signals include registered event sources, scheduled jobs, handlers, or
+function deployment definitions.
+
+Required corroboration:
+
+- trigger-to-handler mapping;
+- deployed or packaged unit boundaries;
+- state, retry, and downstream integration behavior.
+
+## Runtime Interaction Styles
+
+| Style | Candidate signals | Required corroboration |
+|---|---|---|
+| Request-response | Routes, controllers, RPC handlers | Registered entry, handler path, returned response |
+| Command | Executables, subcommands, handlers | Executable declaration, dispatch, exit or artifact behavior |
+| Library call | Public exports, client methods, interfaces | Canonical export and implementation verify the local static contract; a consumer, public API test, or execution is needed for usage or runtime claims |
+| Event-driven | Publishers, brokers, handlers, event schemas | Publisher-to-topic and topic-to-consumer wiring; delivery semantics when claimed |
+| Stream processing | Sources, operators, sinks, checkpoints | Connected topology, state/checkpoint ownership, sink behavior |
+| Batch or DAG | Schedules, tasks, dependencies, artifacts | Orchestrator wiring, task inputs/outputs, retry or checkpoint behavior |
+
+## Code Organization Patterns
+
+### Layered Or MVC-Like
+
+Candidate signals include presentation, controller, service, domain, and data
+access responsibilities with directional calls.
+
+Corroborate the actual dependency direction and journey. Similar directory names
+do not establish a layered architecture, and direct calls are not automatically a
+defect.
+
+### Feature Or Domain-Oriented
+
+Candidate signals include code grouped around business capabilities with local
+handlers, logic, data, and tests.
+
+Corroborate public boundaries, consumers, state ownership, and how cross-feature
+collaboration occurs.
+
+### Ports And Adapters
+
+Candidate signals include domain-facing interfaces implemented by infrastructure
+adapters and composed at an outer boundary.
+
+Corroborate that dependency direction points toward the domain and that concrete
+framework or transport code stays outside the claimed core. Names such as
+`domain/`, `ports/`, or `adapters/` are not sufficient.
+
+### Pipeline
+
+Candidate signals include ordered transformations, middleware, compiler passes,
+data stages, or processing chains.
+
+Corroborate ordering, intermediate representation or data contracts, termination,
+and error propagation.
+
+### Component And State Architecture
+
+Candidate signals include UI components, stores, providers, hooks, view models,
+or reactive state primitives.
+
+Corroborate where state is owned, how updates flow, which components consume it,
+and how server or persistent state differs from local presentation state.
+
+## Recurring Design Patterns
+
+| Pattern | Candidate signals | Required corroboration |
+|---|---|---|
+| Dependency injection | Constructor parameters, providers, containers, wiring functions | Composition chooses concrete implementations and consumers receive them through the claimed boundary |
+| Repository or DAO | `Repository`, `Store`, or DAO interfaces | Consumer uses the abstraction and implementation owns data access |
+| Middleware or pipeline | Registered ordered handlers, filters, interceptors | Runtime registration and next-step/error semantics |
+| Strategy | Shared behavior contract with selectable implementations | Selection point and at least two meaningful implementations |
+| Observer or pub-sub | Subscribe/publish APIs, listeners, hooks | Publisher, registration, consumer, and delivery boundary |
+| Factory or builder | Centralized object construction | Real call sites use it to vary or constrain construction |
+| Facade | Small public surface over several collaborators | Consumers rely on the facade and it coordinates the underlying subsystem |
+
+Do not list every pattern-shaped class. Include only patterns that clarify the
+selected journey or an important change boundary.
+
+## Interface Patterns
+
+| Interface | Candidate signals | Verify |
+|---|---|---|
+| REST-like HTTP | Resource routes and HTTP methods | Route registration, handler, status and payload behavior |
+| GraphQL | Schema, resolvers, operations | Schema-to-resolver wiring and selected operation path |
+| gRPC | Service definitions and generated stubs | Registered implementation and caller or contract test |
+| Message contract | Topic/queue names and schemas | Verify each local publisher or consumer separately; remote delivery, compatibility, and handling remain `Unknown` without external evidence |
+| Plugin contract | Manifest, hook, command, or extension interface | Discovery, registration, invocation, and host interaction |
+| Package API | Export map, public header, module interface | Canonical export plus implementation verify the local static API; consumer use and compatibility require separate evidence |
+
+## Reporting Language
+
+Prefer bounded statements:
+
+- "The selected journey is implemented as request-response across these three
+  observed components."
+- "The billing package appears domain-oriented (`Inferred`) because these public
+  interfaces have two consumers; deployment independence was not checked."
+- "The repository is a workspace; delivery topology remains `Unknown` because
+  deployment configuration was outside scope."
+
+Avoid statements such as "this is microservices" or "this follows Clean
+Architecture" unless the exact scope and corroborating dimensions are stated.

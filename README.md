@@ -38,8 +38,9 @@ agent-skills/
 │   ├── references/          # Necessity, placement, style, integrity & journal guides
 │   └── scripts/             # Heuristic Chinese style diagnostics
 ├── project-analyzer/        # Codebase Analysis & Onboarding
-│   ├── SKILL.md             # 8 modular workflows
-│   └── references/          # Checklists, pattern catalog & report template
+│   ├── SKILL.md             # Evidence-led onboarding workflow
+│   ├── agents/              # Codex UI metadata
+│   └── references/          # Evidence policy, journey playbooks & optional deep dives
 ├── sync-context/            # Cross-Agent Context Sync & Handoff
 │   ├── SKILL.md             # Session protocol & validation
 │   └── scripts/             # Init, check & inject scripts
@@ -63,7 +64,7 @@ agent-skills/
 | [paper-writer](./paper-writer/) | Full lifecycle academic paper writing (code to submission) | - | 10 |
 | [paper-polish](./paper-polish/) | Academic LaTeX paper improvement workflows | - | 6 |
 | [polish-chinese-core-paper](./polish-chinese-core-paper/) | Sentence-level Chinese academic editing with journal and integrity safeguards | - | 7 |
-| [project-analyzer](./project-analyzer/) | Codebase analysis & developer onboarding | - | 8 |
+| [project-analyzer](./project-analyzer/) | Evidence-led codebase onboarding and journey tracing | - | - |
 | [sync-context](./sync-context/) | Cross-agent context sync & handoff protocol | - | 3 |
 | [git-commit](./git-commit/) | Git staging, detailed conventional commits, and safe local merge-back workflow | - | 6 |
 | [how-to-read-a-book](./how-to-read-a-book/) | Active reading workflows for books, papers, and long-form texts | - | 4 |
@@ -104,7 +105,7 @@ agent-skills/
 - **how-to-read-a-book**: Active reading workflows inspired by *How to Read a Book* / 《如何阅读一本书》 (inspectional reading, analytical reading, syntopical comparison, genre-specific reading artifacts)
 
 ### Developer Tools
-- **project-analyzer**: Systematic codebase analysis for project takeover and onboarding (tech stack, structure, architecture, dependencies, code quality, dev workflow, risk assessment, comprehensive report)
+- **project-analyzer**: Evidence-led onboarding for unfamiliar codebases. Establish the project's users and core value, map responsibility and state boundaries, and trace one representative journey through entry points, key code, data changes, side effects, and tests. Stack, dependency, quality, CI, security, and technical-debt checks are optional deep dives.
 - **sync-context**: Cross-agent context synchronization via `CONTEXT.md` handoff protocol (session init/end protocol, structure validation, freshness checks, progressive disclosure via `context/` subdirectory)
 - **git-commit**: Intentional staging and detailed commit drafting for real repository diffs (scope detection, staged/unstaged inspection, conventional commit formatting, post-commit verification, safe local merge-back)
 - **module-diagram-planner**: Diagram selection and planning for explaining a feature or module before drawing Mermaid or design-doc diagrams (boundaries, runtime flows, decisions, config, data, errors, metrics, tests)

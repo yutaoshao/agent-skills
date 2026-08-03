@@ -1,155 +1,165 @@
-# Project Analysis Checklist
+# Optional Deep-Dive Analysis Checklist
 
-A systematic checklist for evaluating an unfamiliar codebase. Work through each section in order; check items that are present and note items that are missing.
+Load only the sections requested by the user or required to investigate a
+material onboarding blocker. This is not the default onboarding workflow.
 
----
+For each question, record:
 
-## 1. Repository Basics
+| Question | Applicable? | State | Evidence | Consequence or next check |
+|---|---|---|---|---|
+| [Context-specific question] | Yes / No / Unknown | Verified / Inferred / Unknown / N/A | [Location or command] | [Why it matters] |
 
-- [ ] README.md exists and is up to date
-- [ ] LICENSE file present
-- [ ] .gitignore configured properly
-- [ ] No sensitive files committed (.env, credentials, private keys)
-- [ ] Repository size is reasonable (no large binaries in git history)
-- [ ] Branch naming convention is consistent
-- [ ] Recent commit activity (not abandoned)
+A missing practice becomes a finding only when project requirements, repository
+rules, or a demonstrated user journey make it consequential.
 
-## 2. Technology Stack
+## Contents
 
-- [ ] Primary language(s) identified
-- [ ] Framework(s) identified with version
-- [ ] Runtime version specified (.nvmrc, .python-version, etc.)
-- [ ] Package manager identified (npm/yarn/pnpm/pip/cargo/go mod)
-- [ ] Build tool identified (webpack/vite/esbuild/rollup/etc.)
-- [ ] Database technology identified
-- [ ] Caching layer identified (if applicable)
-- [ ] Message queue/event system identified (if applicable)
+- [Technology And Dependencies](#technology-and-dependencies)
+- [Testing And Code Quality](#testing-and-code-quality)
+- [Development And Delivery Workflow](#development-and-delivery-workflow)
+- [Security And Trust Boundaries](#security-and-trust-boundaries)
+- [Error Handling And Reliability](#error-handling-and-reliability)
+- [Performance And Scalability](#performance-and-scalability)
+- [Observability](#observability)
+- [Technical Debt And Change Risk](#technical-debt-and-change-risk)
+- [Risk Reporting](#risk-reporting)
 
-## 3. Project Structure
+## Technology And Dependencies
 
-- [ ] Clear separation of concerns in directory layout
-- [ ] Source code directory identified
-- [ ] Test directory identified
-- [ ] Configuration directory identified
-- [ ] Static assets directory identified
-- [ ] Entry point(s) located
-- [ ] Route/endpoint definitions located
-- [ ] Database schema/migrations located
-- [ ] No deeply nested directories (>5 levels)
+Investigate only the manifests, lockfiles, packages, and runtime units in scope.
 
-## 4. Dependency Management
+- Which languages, runtimes, frameworks, package managers, databases, brokers,
+  and platform services participate in the selected scope?
+- Which version source is authoritative: runtime file, manifest, lockfile,
+  resolved environment, container image, or CI configuration?
+- Which third-party dependencies sit on the representative journey or another
+  critical boundary?
+- Are versions reproducible from committed manifests and locks?
+- Which internal packages depend on each other through verified exports,
+  contracts, or runtime calls?
+- Are there demonstrated duplicate, unused, circular, deprecated, vulnerable, or
+  unmaintained dependencies?
+- What fresh authoritative source and retrieval date support any maintenance,
+  deprecation, latest-version, or vulnerability claim?
 
-- [ ] Lock file present and committed
-- [ ] Dependencies are version-pinned or range-locked
-- [ ] No deprecated packages in use
-- [ ] No duplicate-purpose packages
-- [ ] Dev dependencies separated from production dependencies
-- [ ] No unused dependencies
-- [ ] Security audit passes (npm audit / pip audit)
+Do not use lockfile filesystem modification time as maintenance evidence. Use Git
+history for repository change timing and current authoritative package sources
+for ecosystem health. If those sources are unavailable, mark health `Unknown`.
 
-## 5. Code Quality - Formatting & Linting
+## Testing And Code Quality
 
-- [ ] Code formatter configured (Prettier, Black, gofmt, rustfmt)
-- [ ] Linter configured (ESLint, Pylint/Ruff, Clippy, golangci-lint)
-- [ ] Editor config present (.editorconfig)
-- [ ] Pre-commit hooks configured (Husky, pre-commit)
-- [ ] Consistent code style across the codebase
-- [ ] No linter disable comments without justification
+- Which test types exist for the selected behavior and important boundaries?
+- Which assertions prove user-visible outcomes, state changes, and side effects?
+- Were relevant tests executed in the current environment? Record command and
+  result separately from test discovery.
+- Are fixtures, fakes, mocks, and generated data representative of the boundary
+  under test?
+- Which formatter, linter, type checker, static analyzer, or coverage tool is
+  required by repository policy or CI?
+- Do suppressions, weak types, duplication, or complex control flow create a
+  demonstrated maintenance or correctness problem?
+- Does the public API or critical business logic lack a relevant verification
+  surface?
 
-## 6. Code Quality - Type Safety
+File length, function length, nesting, and test-to-source ratios are investigation
+leads only. Do not assign severity without showing responsibility concentration,
+change coupling, defect risk, or another concrete consequence. Do not require E2E
+tests when the project has no relevant end-to-end user boundary.
 
-- [ ] Type system in use (TypeScript, mypy, type hints)
-- [ ] Strict mode enabled (if applicable)
-- [ ] No excessive use of `any` / `object` / `type: ignore`
-- [ ] API boundaries have explicit type definitions
-- [ ] Shared types/interfaces are centralized
+## Development And Delivery Workflow
 
-## 7. Testing
+- What are the canonical install, configure, run, targeted-test, full-test, build,
+  package, and release commands?
+- Which commands were only documented, which were inspected, and which were run?
+- Which environment variables and external services are required, and how are
+  safe local values supplied?
+- What CI stages and release artifacts are verified by repository configuration?
+- Which deployment units and environments exist in the inspected scope?
+- What do repository instructions require for branches, commits, reviews, and
+  releases?
+- Which claims require hosting-provider data that was not inspected?
 
-- [ ] Test framework configured
-- [ ] Unit tests present
-- [ ] Integration tests present
-- [ ] E2E tests present (if applicable)
-- [ ] Test coverage configured and measured
-- [ ] Test coverage threshold set (if applicable)
-- [ ] Tests pass on current main branch
-- [ ] Test fixtures/factories/helpers organized
-- [ ] No flaky tests (check CI history if available)
-- [ ] Critical business logic has test coverage
+Do not infer team workflow from local branch names or `.git/refs/heads`. Local Git
+state can verify the inspected checkout, not remote policy or team practice.
 
-## 8. Documentation
+## Security And Trust Boundaries
 
-- [ ] README contains project description
-- [ ] README contains setup/installation instructions
-- [ ] README contains development workflow
-- [ ] Architecture documentation exists (ADRs, diagrams)
-- [ ] API documentation exists (Swagger/OpenAPI, generated docs)
-- [ ] Inline documentation on complex functions
-- [ ] CONTRIBUTING.md exists
-- [ ] CHANGELOG.md exists
-- [ ] Environment variables documented (.env.example)
+- Where does untrusted input enter the selected journey?
+- Which validation, authentication, authorization, and policy checks apply?
+- Where are trust boundaries crossed through HTTP, RPC, messages, files,
+  subprocesses, plugins, templates, or deserialization?
+- Are database queries, shell commands, paths, and templates constructed through
+  safe APIs at those boundaries?
+- How are credentials referenced, loaded, rotated, and prevented from appearing
+  in logs or artifacts?
+- Are CORS, CSRF, XSS, rate limiting, sandboxing, or permission checks applicable
+  to this project and boundary?
+- Are dependency advisories checked by a current authoritative tool or source?
 
-## 9. CI/CD
+Treat secret-pattern matches as potential findings. Never print or decode values;
+report only the location, suspected class, and redacted description. Record
+tracked-source scope and exclusions. A generic search cannot verify that the
+repository contains no secrets.
 
-- [ ] CI pipeline configured
-- [ ] CI runs linting
-- [ ] CI runs tests
-- [ ] CI runs type checking
-- [ ] CI runs security audit
-- [ ] Build step configured
-- [ ] Deployment pipeline configured
-- [ ] Environment-specific configurations exist
-- [ ] Secrets managed properly (not in repo)
+## Error Handling And Reliability
 
-## 10. Git Workflow
+- How do failures propagate across each boundary in the selected journey?
+- Are errors classified, preserved, logged, translated, retried, or swallowed?
+- What transaction, idempotency, timeout, retry, dead-letter, cleanup, and
+  graceful-shutdown behavior is applicable?
+- Can partial state or duplicate side effects occur?
+- Which tests exercise material failure and recovery behavior?
 
-- [ ] Branching strategy identifiable
-- [ ] Commit message convention followed
-- [ ] PR/MR template exists
-- [ ] Issue template exists
-- [ ] Code review process evident (PR comments, approvals)
-- [ ] Release process documented or evident
+Do not require a global error handler, graceful shutdown, retries, or a dead-letter
+queue when the runtime model does not call for them.
 
-## 11. Security
+## Performance And Scalability
 
-- [ ] No hardcoded secrets in source code
-- [ ] Environment variables used for sensitive configuration
-- [ ] Input validation on API endpoints
-- [ ] Authentication mechanism in place
-- [ ] Authorization/role-based access control present
-- [ ] CORS configured appropriately
-- [ ] Rate limiting configured (if public API)
-- [ ] SQL injection prevention (parameterized queries, ORM)
-- [ ] XSS prevention measures (if web frontend)
-- [ ] CSRF protection (if applicable)
-- [ ] Dependencies scanned for vulnerabilities
+- Which latency, throughput, memory, storage, cost, or concurrency constraints are
+  documented or visible in the selected journey?
+- Are queries, pagination, caching, batching, streaming, indexes, asset sizes, or
+  blocking operations relevant to the observed bottleneck?
+- Is there profiling, benchmark, load-test, query-plan, or production evidence?
+- Which conclusion is only a hypothesis pending measurement?
 
-## 12. Error Handling
+Do not present a theoretical optimization opportunity as a current performance
+defect without impact evidence.
 
-- [ ] Global error handler configured
-- [ ] API endpoints return consistent error format
-- [ ] Errors are logged (not swallowed silently)
-- [ ] User-facing error messages are informative
-- [ ] No catch-all empty catch blocks
-- [ ] Async errors handled properly (no unhandled promise rejections)
-- [ ] Graceful shutdown implemented
+## Observability
 
-## 13. Performance & Scalability
+- Which logs, metrics, traces, events, health signals, or audit records make the
+  selected journey observable?
+- Do correlation identifiers cross process or asynchronous boundaries where
+  applicable?
+- Can an operator distinguish input failure, dependency failure, internal failure,
+  and partial success?
+- Are alerting and dashboards in repository scope or hosted elsewhere?
 
-- [ ] Database queries are indexed (check migration files)
-- [ ] N+1 query prevention (eager loading, data loaders)
-- [ ] Pagination implemented for list endpoints
-- [ ] Caching strategy in place (if applicable)
-- [ ] Static assets optimized (compression, CDN)
-- [ ] Bundle size considered (if frontend)
-- [ ] No synchronous blocking operations in async contexts
+Do not require distributed tracing, health endpoints, or request logging for a
+library, static artifact, or other project without those operational boundaries.
 
-## 14. Observability
+## Technical Debt And Change Risk
 
-- [ ] Logging framework configured
-- [ ] Log levels used appropriately
-- [ ] Request/response logging for APIs
-- [ ] Error tracking service integrated (Sentry, Datadog, etc.)
-- [ ] Health check endpoint exists
-- [ ] Metrics collection configured (if applicable)
-- [ ] Distributed tracing (if microservices)
+- Which TODO, FIXME, workaround, duplication, legacy path, or inconsistent pattern
+  intersects core value or a high-change boundary?
+- Does Git history show repeated fixes, coupled changes, ownership concentration,
+  or churn in the relevant area?
+- Which generated, vendored, migration, compatibility, or public-contract files
+  constrain changes?
+- What tests, rollout mechanism, feature flag, migration plan, or rollback path
+  reduce the change risk?
+- Is the proposed concern reachable through a normal or security-relevant path?
+
+Marker counts and repository size do not establish debt. Explain the consequence
+of each reported item.
+
+## Risk Reporting
+
+Report only risks with a concrete consequence and evidence:
+
+| Risk | Impact | Likelihood or reachability | Evidence state | Evidence | Suggested next check or action |
+|---|---|---|---|---|---|
+| [Specific failure or maintenance risk] | [User/system consequence] | [Why it can occur] | Verified / Inferred / Unknown | [Locations/results] | [Proportionate response] |
+
+Order risks by demonstrated impact and likelihood, not discovery order or category.
+Do not produce an overall health grade unless the user supplies a scoring rubric.

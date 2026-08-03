@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Analyzer"
+  short_description: "Trace core journeys through unfamiliar codebases"
+  default_prompt: "Use $project-analyzer to explain the repository's core value, map how its main modules collaborate, and trace one representative journey through entry points, key code, data changes, side effects, and tests."

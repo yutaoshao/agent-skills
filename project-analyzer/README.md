@@ -1,68 +1,85 @@
 # project-analyzer
 
-A skill for systematically analyzing unfamiliar codebases when taking over or onboarding to a new project.
+An evidence-led onboarding skill for developers taking over unfamiliar
+repositories.
 
-## Features
+## Outcome
 
-Eight modular workflows that can be invoked individually or combined:
+The default workflow helps a newcomer:
 
-| Module | Function | Trigger Keywords |
-|--------|----------|-----------------|
-| Module 1 | Technology stack identification | tech stack, frameworks, technologies |
-| Module 2 | Project structure & entry points | structure, layout, entry points |
-| Module 3 | Architecture & design patterns | architecture, patterns, data flow |
-| Module 4 | Dependency analysis | dependencies, packages, libraries |
-| Module 5 | Code quality assessment | quality, testing, linting, standards |
-| Module 6 | Development workflow & standards | CI/CD, deployment, dev process |
-| Module 7 | Risk & technical debt | risks, tech debt, security, TODOs |
-| Module 8 | Comprehensive report | full analysis, overview, onboarding |
+- explain who the project serves and what recurring value it delivers;
+- map core modules by responsibility, contract, and state ownership;
+- select one representative, routine user or consumer journey;
+- trace that journey through entry points, key symbols, data changes, side
+  effects, observable results, and tests;
+- distinguish verified facts from inferences, unknowns, and non-applicable checks.
+
+## Default Workflow
+
+1. Establish repository scope, instructions, revision, and exclusions.
+2. Build the product and domain model.
+3. Classify the project type and map module responsibilities.
+4. Select a journey that demonstrates core value and crosses key boundaries.
+5. Trace concrete symbols from trigger to observable result.
+6. Run only safe, targeted verification.
+7. Produce an evidence-backed onboarding map and reading order.
+
+The skill does not run a comprehensive audit merely because the user asks for an
+overview.
+
+## Optional Deep Dives
+
+Focused workflows are available for technology and dependencies, testing and
+quality, development and delivery, security, reliability, performance,
+observability, technical debt, and change risk.
+
+## Skill Structure
+
+```text
+project-analyzer/
+|-- SKILL.md
+|-- agents/
+|   `-- openai.yaml
+`-- references/
+    |-- evidence-policy.md
+    |-- journey-playbooks.md
+    |-- architecture-patterns.md
+    |-- analysis-checklist.md
+    `-- report-template.md
+```
 
 ## Installation
 
-### Option A: Claude Code Plugin Marketplace
+### Codex
+
+Use the built-in `$skill-installer`:
+
+```text
+$skill-installer https://github.com/yutaoshao/agent-skills/tree/main/project-analyzer
+```
+
+### Claude Code Plugin Marketplace
 
 ```bash
 /plugin marketplace add yutaoshao/agent-skills/project-analyzer
 ```
 
-### Option B: Manual installation
+### Manual Claude Code Installation
 
 ```bash
 git clone https://github.com/yutaoshao/agent-skills.git
 cp -r agent-skills/project-analyzer ~/.claude/skills/
 ```
 
-## Skill Structure
-
-```
-project-analyzer/
-├── SKILL.md                            # Main skill definition (8 modules)
-└── references/
-    ├── analysis-checklist.md           # 100+ item quality checklist
-    ├── architecture-patterns.md        # Architecture & design pattern catalog
-    └── report-template.md             # Comprehensive report template
-```
-
-## Reference Files
-
-- **analysis-checklist.md**: 100+ item checklist covering repository basics, technology stack, project structure, dependencies, code quality, testing, documentation, CI/CD, git workflow, security, error handling, performance, and observability.
-
-- **architecture-patterns.md**: Catalog of architectural styles (monolith, modular monolith, microservices, serverless, monorepo) and design patterns (MVC, Clean Architecture, CQRS, repository, DI, middleware, strategy) with file structure signatures and code-level identification heuristics.
-
-- **report-template.md**: Markdown template for the comprehensive analysis report including executive summary, tech stack table, project map, architecture overview, dependency health, quality snapshot, developer onboarding quick start, risk register, and prioritized recommended first steps.
-
 ## Usage
 
-The skill activates when Claude detects project analysis or onboarding tasks. Example prompts:
+Example requests:
 
-- "Analyze this project for me"
-- "Help me understand this codebase"
-- "I just took over this project, give me an overview"
-- "What tech stack does this project use?"
-- "What are the main risks in this codebase?"
-- "Generate a full project report"
-- "Where are the entry points in this project?"
-- "How is this project structured?"
+- "I just joined this team. Help me understand this repository."
+- "Explain what this project is for and how its core modules collaborate."
+- "Trace one representative user journey from entry point to tests."
+- "Map the architecture of this CLI without assuming it is a web service."
+- "Perform a focused dependency or security deep dive."
 
 ## License
 

@@ -38,8 +38,9 @@ agent-skills/
 │   ├── references/          # 必要性、位置、表达、诚信与期刊审校指南
 │   └── scripts/             # 中文学术表达启发式诊断脚本
 ├── project-analyzer/        # 代码库分析与上手
-│   ├── SKILL.md             # 8 个模块化工作流
-│   └── references/          # 检查清单、模式目录与报告模板
+│   ├── SKILL.md             # 证据化项目上手流程
+│   ├── agents/              # Codex UI 元数据
+│   └── references/          # 证据规则、场景路径指南与按需深挖
 ├── sync-context/            # 跨 Agent 上下文同步与交接
 │   ├── SKILL.md             # 会话协议与验证
 │   └── scripts/             # 初始化、检查与注入脚本
@@ -63,7 +64,7 @@ agent-skills/
 | [paper-writer](./paper-writer/) | 学术论文全流程写作（从代码到投稿） | - | 10 |
 | [paper-polish](./paper-polish/) | 学术 LaTeX 论文润色工作流 | - | 6 |
 | [polish-chinese-core-paper](./polish-chinese-core-paper/) | 兼顾逐句内容取舍、目标期刊与学术诚信的中文论文编辑工作流 | - | 7 |
-| [project-analyzer](./project-analyzer/) | 代码库分析与开发者上手 | - | 8 |
+| [project-analyzer](./project-analyzer/) | 证据化代码库上手与代表性使用路径追踪 | - | - |
 | [sync-context](./sync-context/) | 跨 Agent 上下文同步与交接协议 | - | 3 |
 | [git-commit](./git-commit/) | Git 暂存、详细 conventional commit 与安全本地合并回主分支工作流 | - | 6 |
 | [how-to-read-a-book](./how-to-read-a-book/) | 面向书籍、论文与长文的主动阅读工作流 | - | 4 |
@@ -104,7 +105,7 @@ agent-skills/
 - **how-to-read-a-book**: 受 *How to Read a Book* / 《如何阅读一本书》启发的主动阅读工作流（检视阅读、分析阅读、主题阅读比较、按体裁生成阅读产物）
 
 ### 开发者工具
-- **project-analyzer**: 系统化代码库分析（技术栈识别、项目结构、架构模式、依赖分析、代码质量、开发流程、风险评估、综合报告），适用于项目交接与新人上手
+- **project-analyzer**: 面向陌生代码库的证据化接手与上手分析。识别项目服务的用户与核心价值，梳理职责和状态边界，并沿一条代表性路径追踪入口、关键代码、数据变化、副作用与测试；技术栈、依赖、质量、CI、安全和技术债作为按需深挖项
 - **sync-context**: 跨 Agent 上下文同步，通过 `CONTEXT.md` 交接协议实现（会话启动/结束协议、结构验证、时效检查、通过 `context/` 子目录渐进式披露）
 - **git-commit**: 面向真实仓库 diff 的 Git 暂存与详细提交说明（范围判断、staged/unstaged 检查、conventional commit 格式化、提交后核对、安全本地合并回主分支）
 - **module-diagram-planner**: 在绘制 Mermaid 或设计文档图之前，为功能模块选择和规划图谱（边界、运行时流程、决策、配置、数据、错误、指标、测试）
