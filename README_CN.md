@@ -35,8 +35,8 @@ agent-skills/
 │   └── references/          # 模式目录与检查清单
 ├── polish-chinese-core-paper/ # 中文核心期刊论文润色
 │   ├── SKILL.md             # 逐句审查、学术诚信优先的实质编辑流程
-│   ├── references/          # 必要性、位置、表达、诚信与期刊审校指南
-│   └── scripts/             # 中文学术表达启发式诊断脚本
+│   ├── references/          # 必要性、诚信、期刊与 Word 公式审校指南
+│   └── scripts/             # 中文表达与 DOCX 公式诊断脚本
 ├── project-analyzer/        # 代码库分析与上手
 │   ├── SKILL.md             # 证据化项目上手流程
 │   ├── agents/              # Codex UI 元数据
@@ -53,6 +53,10 @@ agent-skills/
 ├── module-diagram-planner/  # 模块图谱选择与规划
 │   ├── SKILL.md             # 图谱规划工作流
 │   └── references/          # 图类型目录与选择启发
+├── adr-management/          # 架构决策记录管理
+│   ├── SKILL.md             # 持久化 ADR 流程与 Trellis 联动
+│   ├── references/          # ADR 模板与元数据规则
+│   └── scripts/             # 无依赖 ADR 生命周期 CLI
 └── [其他技能库]/             # 扩展位置
 ```
 
@@ -63,12 +67,13 @@ agent-skills/
 | [glm-skills](./glm-skills/) | 智谱 GLM AI 能力集合 | z-ai-web-dev-sdk | 12 |
 | [paper-writer](./paper-writer/) | 学术论文全流程写作（从代码到投稿） | - | 10 |
 | [paper-polish](./paper-polish/) | 学术 LaTeX 论文润色工作流 | - | 6 |
-| [polish-chinese-core-paper](./polish-chinese-core-paper/) | 兼顾逐句内容取舍、目标期刊与学术诚信的中文论文编辑工作流 | - | 7 |
+| [polish-chinese-core-paper](./polish-chinese-core-paper/) | 兼顾逐句内容取舍、目标期刊、学术诚信与 Word 公式保真的中文论文编辑工作流 | - | 8 |
 | [project-analyzer](./project-analyzer/) | 证据化代码库上手与代表性使用路径追踪 | - | - |
 | [sync-context](./sync-context/) | 跨 Agent 上下文同步与交接协议 | - | 3 |
 | [git-commit](./git-commit/) | Git 暂存、详细 conventional commit 与安全本地合并回主分支工作流 | - | 6 |
 | [how-to-read-a-book](./how-to-read-a-book/) | 面向书籍、论文与长文的主动阅读工作流 | - | 4 |
 | [module-diagram-planner](./module-diagram-planner/) | 面向功能模块理解的图谱选择与规划 | - | 2 |
+| [adr-management](./adr-management/) | 创建、评审、校验和替代 ADR，并与 Trellis 联动 | - | 3 |
 
 ## 技能分类
 
@@ -99,7 +104,7 @@ agent-skills/
 ### 学术写作
 - **paper-writer**: 学术论文全流程写作，从项目源代码到可投稿 LaTeX 论文（10 阶段：代码分析、文献综述、论文结构、章节写作、图表生成、引用管理、去AI润色、LaTeX编译、投稿审查、返修重投）
 - **paper-polish**: 自动化 LaTeX 论文润色（去 AI 痕迹、引用扩展、图表验证、编译清理、全面质量审查）
-- **polish-chinese-core-paper**: 面向中文核心期刊投稿的实质编辑；标准与深度模式逐句判断功能、必要性、篇章位置和强调程度，同时保护数据与论证边界，并支持计算机与工程学科规则、可追溯期刊 profile 和作者待确认项
+- **polish-chinese-core-paper**: 面向中文核心期刊投稿的实质编辑；标准与深度模式逐句、逐公式判断功能、必要性、篇章位置和强调程度，同时保护数据与论证边界，保留 Word 原生 OMML 与嵌入公式对象，核对编号、交叉引用和逐页渲染，并支持计算机与工程学科规则、可追溯期刊 profile 和作者待确认项
 
 ### 阅读与学习
 - **how-to-read-a-book**: 受 *How to Read a Book* / 《如何阅读一本书》启发的主动阅读工作流（检视阅读、分析阅读、主题阅读比较、按体裁生成阅读产物）
@@ -109,6 +114,7 @@ agent-skills/
 - **sync-context**: 跨 Agent 上下文同步，通过 `CONTEXT.md` 交接协议实现（会话启动/结束协议、结构验证、时效检查、通过 `context/` 子目录渐进式披露）
 - **git-commit**: 面向真实仓库 diff 的 Git 暂存与详细提交说明（范围判断、staged/unstaged 检查、conventional commit 格式化、提交后核对、安全本地合并回主分支）
 - **module-diagram-planner**: 在绘制 Mermaid 或设计文档图之前，为功能模块选择和规划图谱（边界、运行时流程、决策、配置、数据、错误、指标、测试）
+- **adr-management**: 管理持久化架构决策记录，支持状态转换、替代关系、确定性校验，并明确关联 Trellis `design.md` 与 `.trellis/spec/`
 
 ## 快速开始
 
@@ -118,6 +124,7 @@ agent-skills/
 
 ```text
 $skill-installer https://github.com/yutaoshao/agent-skills/tree/main/polish-chinese-core-paper
+$skill-installer https://github.com/yutaoshao/agent-skills/tree/main/adr-management
 ```
 
 将 URL 末尾替换为本仓库中的其他技能目录即可安装相应技能。Codex 会自动检测新安装的技能；如果技能没有出现，请重启 Codex。
@@ -128,6 +135,7 @@ $skill-installer https://github.com/yutaoshao/agent-skills/tree/main/polish-chin
 git clone https://github.com/yutaoshao/agent-skills.git
 mkdir -p ~/.agents/skills
 cp -R agent-skills/polish-chinese-core-paper ~/.agents/skills/
+cp -R agent-skills/adr-management ~/.agents/skills/
 ```
 
 如果技能只应在某个仓库内使用，请改为复制到该仓库的 `.agents/skills/` 目录。
@@ -169,6 +177,9 @@ cp -R agent-skills/polish-chinese-core-paper ~/.agents/skills/
 
 # 模块图谱规划
 /plugin marketplace add yutaoshao/agent-skills/module-diagram-planner
+
+# 架构决策记录管理
+/plugin marketplace add yutaoshao/agent-skills/adr-management
 ```
 
 ### 为 Claude Code 手动安装
@@ -183,6 +194,7 @@ cp -r agent-skills/project-analyzer ~/.claude/skills/
 cp -r agent-skills/git-commit ~/.claude/skills/
 cp -r agent-skills/how-to-read-a-book ~/.claude/skills/
 cp -r agent-skills/module-diagram-planner ~/.claude/skills/
+cp -r agent-skills/adr-management ~/.claude/skills/
 ```
 
 每个技能模块的 `SKILL.md` 包含完整的使用指南和代码示例。

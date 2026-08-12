@@ -35,8 +35,8 @@ agent-skills/
 │   └── references/          # Pattern catalogs & checklists
 ├── polish-chinese-core-paper/ # Chinese Core Journal Paper Polish
 │   ├── SKILL.md             # Sentence-level, integrity-first editorial workflow
-│   ├── references/          # Necessity, placement, style, integrity & journal guides
-│   └── scripts/             # Heuristic Chinese style diagnostics
+│   ├── references/          # Necessity, integrity, journal & Word equation guides
+│   └── scripts/             # Chinese style and DOCX equation diagnostics
 ├── project-analyzer/        # Codebase Analysis & Onboarding
 │   ├── SKILL.md             # Evidence-led onboarding workflow
 │   ├── agents/              # Codex UI metadata
@@ -53,6 +53,10 @@ agent-skills/
 ├── module-diagram-planner/  # Module Diagram Selection & Planning
 │   ├── SKILL.md             # Diagram planning workflow
 │   └── references/          # Diagram type catalog and selection heuristics
+├── adr-management/          # Architecture Decision Record Management
+│   ├── SKILL.md             # Durable ADR workflow and Trellis linkage
+│   ├── references/          # ADR template and metadata rules
+│   └── scripts/              # Dependency-free ADR lifecycle CLI
 └── [other-skills]/          # Extension Point
 ```
 
@@ -63,12 +67,13 @@ agent-skills/
 | [glm-skills](./glm-skills/) | GLM AI capabilities collection | z-ai-web-dev-sdk | 12 |
 | [paper-writer](./paper-writer/) | Full lifecycle academic paper writing (code to submission) | - | 10 |
 | [paper-polish](./paper-polish/) | Academic LaTeX paper improvement workflows | - | 6 |
-| [polish-chinese-core-paper](./polish-chinese-core-paper/) | Sentence-level Chinese academic editing with journal and integrity safeguards | - | 7 |
+| [polish-chinese-core-paper](./polish-chinese-core-paper/) | Sentence-level Chinese academic editing with journal, integrity, and Word equation safeguards | - | 8 |
 | [project-analyzer](./project-analyzer/) | Evidence-led codebase onboarding and journey tracing | - | - |
 | [sync-context](./sync-context/) | Cross-agent context sync & handoff protocol | - | 3 |
 | [git-commit](./git-commit/) | Git staging, detailed conventional commits, and safe local merge-back workflow | - | 6 |
 | [how-to-read-a-book](./how-to-read-a-book/) | Active reading workflows for books, papers, and long-form texts | - | 4 |
 | [module-diagram-planner](./module-diagram-planner/) | Diagram planning for feature and module understanding | - | 2 |
+| [adr-management](./adr-management/) | Create, review, validate, and supersede ADRs with Trellis links | - | 3 |
 
 ## Skill Categories
 
@@ -99,7 +104,7 @@ agent-skills/
 ### Academic Writing
 - **paper-writer**: Full lifecycle academic paper writing from project source code to submission-ready LaTeX (10 stages: code analysis, literature review, structure, drafting, figures, citations, de-AI polish, LaTeX compilation, submission review, revision)
 - **paper-polish**: Automated LaTeX paper improvement (de-AI polishing, citation expansion, figure/table verification, compilation cleanup, full quality review)
-- **polish-chinese-core-paper**: Chinese academic manuscript editing for core-journal submission, with exhaustive sentence-function, necessity, placement, and emphasis audits in standard/deep work; protected evidence anchors; computer science and engineering guidance; verified journal profiles; and explicit author queries
+- **polish-chinese-core-paper**: Chinese academic manuscript editing for core-journal submission, with exhaustive sentence and equation necessity audits in standard/deep work; protected evidence anchors; native Word OMML and embedded-equation preservation; numbering and cross-reference checks; rendered-page verification; computer science and engineering guidance; verified journal profiles; and explicit author queries
 
 ### Reading & Learning
 - **how-to-read-a-book**: Active reading workflows inspired by *How to Read a Book* / 《如何阅读一本书》 (inspectional reading, analytical reading, syntopical comparison, genre-specific reading artifacts)
@@ -109,6 +114,7 @@ agent-skills/
 - **sync-context**: Cross-agent context synchronization via `CONTEXT.md` handoff protocol (session init/end protocol, structure validation, freshness checks, progressive disclosure via `context/` subdirectory)
 - **git-commit**: Intentional staging and detailed commit drafting for real repository diffs (scope detection, staged/unstaged inspection, conventional commit formatting, post-commit verification, safe local merge-back)
 - **module-diagram-planner**: Diagram selection and planning for explaining a feature or module before drawing Mermaid or design-doc diagrams (boundaries, runtime flows, decisions, config, data, errors, metrics, tests)
+- **adr-management**: Durable Architecture Decision Records with status transitions, supersession links, deterministic validation, and explicit linkage to Trellis `design.md` and `.trellis/spec/`
 
 ## Quick Start
 
@@ -118,6 +124,7 @@ Use Codex's built-in `$skill-installer` to install an individual skill directly 
 
 ```text
 $skill-installer https://github.com/yutaoshao/agent-skills/tree/main/polish-chinese-core-paper
+$skill-installer https://github.com/yutaoshao/agent-skills/tree/main/adr-management
 ```
 
 Replace the final path with another skill directory from this repository. Codex detects newly installed skills automatically; restart Codex if a skill does not appear.
@@ -128,6 +135,7 @@ For a manual user-scoped installation, clone the repository and copy the desired
 git clone https://github.com/yutaoshao/agent-skills.git
 mkdir -p ~/.agents/skills
 cp -R agent-skills/polish-chinese-core-paper ~/.agents/skills/
+cp -R agent-skills/adr-management ~/.agents/skills/
 ```
 
 To make a skill available only inside one repository, copy it into that repository's `.agents/skills/` directory instead.
@@ -169,6 +177,9 @@ Or install individual skills:
 
 # Module diagram planning
 /plugin marketplace add yutaoshao/agent-skills/module-diagram-planner
+
+# Architecture Decision Record management
+/plugin marketplace add yutaoshao/agent-skills/adr-management
 ```
 
 ### Manual Installation for Claude Code
@@ -183,6 +194,7 @@ cp -r agent-skills/project-analyzer ~/.claude/skills/
 cp -r agent-skills/git-commit ~/.claude/skills/
 cp -r agent-skills/how-to-read-a-book ~/.claude/skills/
 cp -r agent-skills/module-diagram-planner ~/.claude/skills/
+cp -r agent-skills/adr-management ~/.claude/skills/
 ```
 
 Each skill module's `SKILL.md` contains complete usage guides and code examples.

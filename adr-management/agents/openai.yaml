@@ -1,0 +1,4 @@
+interface:
+  display_name: "ADR Management"
+  short_description: "Create, review, and link architecture decisions"
+  default_prompt: "Use $adr-management to record, review, validate, or supersede an architecture decision and link it to the current design and project specs."
