@@ -82,7 +82,10 @@ Do not repair missing reproducibility details by guessing common defaults. Raise
 
 - Use one Chinese term for each concept unless a distinction is intentional.
 - Define an English abbreviation at first use and apply it consistently thereafter.
-- Keep symbols, subscripts, vector and matrix styles, and equation references consistent.
+- Give each displayed equation a necessary modeling, derivation, constraint, definition, or evidentiary role; query equations that are repeated, unused, or disconnected from the method and results.
+- Introduce an equation before or with its first use, then explain the nonstandard symbols, assumptions, conditions, inputs, and outputs needed to reproduce the reasoning.
+- Use one symbol for one meaning, and keep operators, subscripts, superscripts, index ranges, dimensions, vector and matrix styles, and equation references consistent.
+- Do not collapse a necessary derivation into a result-only formula or expand a standard identity into decorative steps merely to change manuscript length.
 - Preserve official dataset, method, product, protocol, and standard names.
 - Follow the verified journal rules for quantities, units, punctuation, capitalization, and Chinese-English spacing.
 

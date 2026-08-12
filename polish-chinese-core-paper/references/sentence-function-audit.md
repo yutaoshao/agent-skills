@@ -31,7 +31,7 @@ Do not use reader comfort, favorable appearance, or narrative smoothness as grou
 - Audit every prose sentence in `standard` and `deep` work.
 - Treat a proposition-bearing heading, list item, caption, table note, footnote, or callout as a sentence-equivalent unit.
 - Audit distinct propositions separately when one grammatical sentence contains multiple claims with different evidence or functions.
-- Preserve equations, code, and formal notation as protected objects; audit the surrounding claim, definition, or interpretation.
+- Treat displayed equations and material inline formulas as technical units: audit their function, necessity, placement, definition, and later use while preserving their mathematical semantics. For Word files, apply `word-equation-typesetting.md`; do not rewrite mathematics as part of a prose-only edit.
 - Create identifiers for protected propositions when they may move, such as `P-LIM-01`, `P-RESULT-03`, or `P-SCOPE-02`.
 
 ## Sentence Gates
@@ -72,6 +72,8 @@ Assign one primary disposition to each audited unit. Record a linked secondary a
 | `query` | Necessity, evidence, intended emphasis, or authorial meaning cannot be resolved | Keep a provisional version and state the decision needed |
 
 In `light`, flag content-bearing `move`, `delete`, and `query` decisions without applying them silently. In `standard`, apply only low-risk dispositions whose informational content and argumentative emphasis remain intact, and log every nonlocal change. In `deep`, show high-risk dispositions as explicit proposals and request confirmation where required by the integrity rules.
+
+Use stable identifiers such as `E-001` for audited equations. A formula can receive a disposition, but changing its operators, operands, signs, scripts, conditions, or symbol meanings is a mathematical-content edit rather than a language rewrite and requires an explicit evidence trail and author confirmation when unresolved.
 
 ## Section Allocation
 
@@ -125,6 +127,7 @@ Verify in both directions:
 3. **Redundancy check**: Confirm that each repeated proposition serves a distinct purpose.
 4. **Placement check**: Read each section without the change log and confirm that information arrives where the reader needs it.
 5. **Emphasis check**: Inspect high-emphasis positions for disproportionate caveats, secondary detail, unsupported novelty, or hidden boundaries.
+6. **Formal-unit check**: Confirm that every retained equation performs a necessary technical function, is introduced and used, and remains semantically and structurally traceable.
 
 Deliver the complete ledger only when the user requests it. Otherwise report changed, deleted, moved, high-risk, and unresolved units with concise reasons.
 

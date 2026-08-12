@@ -7,8 +7,9 @@ description: >-
   necessary, correctly placed, and proportionately emphasized. Use for requests
   involving 中文核心、北大核心或 CSCD 论文润色, 中文学术表达优化, 逐句必要性审查,
   内容取舍与篇章位置调整, 摘要或段落改写, 去除机械或 AI 腔, 期刊规范核对,
-  保留修改说明, or submission-oriented review of .docx, .tex, .md, PDF, and
-  plain-text manuscripts.
+  保留修改说明, Word 公式排版, OMML 或 MathType 公式保真, 公式编号与交叉引用,
+  or submission-oriented review of .docx, .tex, .md, PDF, and plain-text
+  manuscripts.
 ---
 
 # Polish Chinese Core Journal Papers
@@ -51,8 +52,9 @@ Default to `standard` for an unspecified whole-manuscript request and `light` fo
 2. Read `references/chinese-academic-style.md` for every language-polishing task.
 3. Read `references/sentence-function-audit.md` for `standard`, `deep`, and every request that asks whether content should remain, move, merge, or be deleted.
 4. Read `references/cs-engineering-profile.md` only for computer science and engineering manuscripts.
-5. For journal-specific work, obtain current official instructions and fill `references/journal-profile-schema.md` in task-local notes.
-6. Read `references/review-checklist.md` for `standard`, `deep`, and submission-readiness tasks.
+5. Read `references/word-equation-typesetting.md` for every DOCX containing equations, material mathematical notation, equation numbers, or equation cross-references.
+6. For journal-specific work, obtain current official instructions and fill `references/journal-profile-schema.md` in task-local notes.
+7. Read `references/review-checklist.md` for `standard`, `deep`, and submission-readiness tasks.
 
 Prefer official author instructions, the official submission system, and official templates. Record the source and access date. Treat recent published articles as examples of editorial practice, not as formal rules. If a requirement cannot be verified, mark it `unknown`; do not infer it from the journal's index category or from another journal.
 
@@ -61,7 +63,8 @@ Prefer official author instructions, the official submission system, and officia
 Before editing, inventory the protected anchors relevant to the input:
 
 - numbers, units, ranges, uncertainty values, dates, sample sizes, and statistical results;
-- equations, symbols, algorithms, code identifiers, method names, datasets, and metrics;
+- equation semantics and structure, symbols, algorithms, code identifiers, method names, datasets, and metrics;
+- for Word equations, native or embedded object type, equation order, numbering fields, bookmarks, and cross-reference links;
 - citation keys, author-year references, quotations, figure/table references, and bibliography metadata;
 - research questions, assumptions, limitations, comparison scope, causal strength, and conclusion strength;
 - funding, ethics, conflict-of-interest, data-availability, authorship, and affiliation statements.
@@ -82,6 +85,7 @@ Process a full manuscript section by section. Read enough surrounding context to
 ### Pass 2: Audit Every Sentence
 
 - In `standard` and `deep`, evaluate every prose sentence and every proposition-bearing heading, list item, caption, and note using `references/sentence-function-audit.md`.
+- Audit each displayed equation and each material inline formula as a technical unit when the manuscript contains mathematics; judge function, necessity, placement, definition, and later use without silently rewriting the mathematics.
 - Assign one disposition: `keep`, `rewrite`, `merge`, `move`, `delete`, or `query`.
 - Apply the deletion test: state what necessary fact, reasoning step, evidence, qualification, or navigation would be lost. If nothing unique would be lost, merge or delete the sentence.
 - Check whether the information has a better home elsewhere and whether its current position gives it too much or too little emphasis.
@@ -111,25 +115,37 @@ Process a full manuscript section by section. Read enough surrounding context to
 - Use “显著” as a statistical claim only when the manuscript provides an appropriate test; otherwise query or weaken it with author approval.
 - Never generate references or bibliographic metadata from memory. Preserve unverified items and mark them `[待核引]` in the report rather than silently completing them.
 
-### Pass 6: Check Journal Requirements
+### Pass 6: Audit Word Equations
+
+Apply this pass to equation-bearing DOCX files:
+
+- Inventory native OMML, embedded OLE or MathType candidates, drawing or image candidates, displayed and inline formulas, visible numbers, `SEQ` and `REF` fields, and bookmarks before editing.
+- For `standard` and `deep`, decide whether each material formula is necessary, belongs in its current location, should be inline or displayed, and is introduced and used by the surrounding prose.
+- Freeze operators, signs, term order, scripts, limits, dimensions, conditions, and symbol meanings unless supplied evidence proves a correction. Treat any mathematical-content change as high risk and make it explicit.
+- Preserve the existing editable representation. Do not rebuild an equation-bearing paragraph from plain text, convert native equations to images, or normalize mixed OMML and OLE objects without authorization.
+- Apply only verified target-journal equation rules. When none exist, preserve the manuscript's internally consistent convention and label remaining checks `unknown`.
+- Run the structural audit and visual checks in `references/word-equation-typesetting.md`; an OOXML check and a page render are both required for final formula-bearing DOCX delivery.
+
+### Pass 7: Check Journal Requirements
 
 - Evaluate only requirements recorded in the journal profile.
 - Report each requirement as `pass`, `fail`, `unknown`, or `not-applicable`, with evidence.
 - Keep formal requirements separate from optional style suggestions.
 - Do not claim that compliance predicts acceptance.
 
-### Pass 7: Verify the Revision
+### Pass 8: Verify the Revision
 
 - Compare the revised manuscript against the integrity-anchor inventory.
 - Run a coverage check: every necessary protected proposition from the source remains present, correctly scoped, and sufficiently visible.
 - Run an entitlement check: every sentence in the revised manuscript performs a necessary function in its current location.
 - Recheck every changed or relocated sentence containing a number, citation, equation reference, comparison, limitation, negative result, or conclusion.
+- For equation-bearing DOCX files, compare native math signatures, embedded-object hashes, numbers, fields, bookmarks, and references; then inspect every formula page after rendering and every page in the final repaginated document.
 - Read the clean revision independently of the change log, then re-read each modified paragraph in context; pattern replacement alone is not a quality check.
 - Run the final checks in `references/review-checklist.md` and surface every unresolved issue.
 
 ## Handle File Formats
 
-- For `.docx`, use structured Word tooling. Preserve styles, fields, equations, comments, footnotes, and revision state; use tracked changes only when the selected tool can generate valid Word revisions.
+- For `.docx`, use structured Word tooling. Before editing, classify equation objects as native OMML, embedded OLE or MathType candidates, drawings or images, or plain text. Preserve styles, fields, bookmarks, equations, relationships, comments, footnotes, and revision state; edit mixed-content paragraphs at node or run level rather than assigning whole-paragraph text. Use tracked changes only when the selected tool can generate valid Word revisions.
 - For `.tex`, preserve commands, environments, labels, references, citations, and macros. Compile after source-format edits when a compatible toolchain is available, and report unavailable compilation plainly.
 - For `.md` and plain text, preserve headings, tables, citation syntax, and code blocks.
 - For PDF-only input, perform review and return replacement text or annotations. Request the editable source before promising an in-place polished manuscript.
@@ -147,6 +163,16 @@ python3 scripts/check_chinese_style.py manuscript.md --long-sentence 70
 
 Use `--long-sentence 0` to disable the configurable sentence-length heuristic. The script reports review prompts and never rewrites text. Do not run it directly on `.docx` or PDF files; extract text with format-aware tooling first. Treat zero findings only as “no configured patterns detected,” not as proof of quality or compliance.
 
+For equation-bearing Word files, run the read-only DOCX audit before and after editing:
+
+```bash
+python3 scripts/audit_word_equations.py manuscript.docx
+python3 scripts/audit_word_equations.py before.docx --compare revised.docx --strict
+python3 scripts/audit_word_equations.py manuscript.docx --expect-native 16 --expect-displayed 11 --require-consecutive
+```
+
+`--expect-native` counts all native OMML objects, including inline formulas; `--expect-displayed` checks displayed and display-candidate objects separately. Use `--require-consecutive` only when the verified numbering rule is continuous integers from 1. The audit cannot establish mathematical correctness or visual quality; follow it with Word field updating when available and rendered-page inspection.
+
 ## Deliver the Result
 
 Match delivery detail to task size. For a short excerpt, provide the polished text and concise notes. For a section or full manuscript, provide:
@@ -158,6 +184,8 @@ Match delivery detail to task size. For a short excerpt, provide the polished te
 5. a journal-compliance table when a verified target profile exists;
 6. an integrity summary confirming what was compared and listing any anchors or protected propositions that could not be verified.
 
+For a formula-bearing DOCX, also report object counts and representations, intentionally changed formulas, numbering and cross-reference results, structural comparison, rendered-page inspection, and whether fields were updated in desktop Word.
+
 Describe the result as ready for author review, not guaranteed submission acceptance.
 
 ## Reference Map
@@ -167,4 +195,5 @@ Describe the result as ready for author review, not guaranteed submission accept
 - `references/sentence-function-audit.md`: sentence-level function, necessity, placement, emphasis, and disposition rules.
 - `references/journal-profile-schema.md`: source hierarchy and task-local journal requirement template.
 - `references/cs-engineering-profile.md`: default rhetorical and evidentiary guidance for computer science and engineering.
+- `references/word-equation-typesetting.md`: Word equation necessity, object preservation, layout, numbering, cross-reference, and two-gate verification protocol.
 - `references/review-checklist.md`: final quality gate, severity model, and delivery report structure.

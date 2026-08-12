@@ -20,6 +20,7 @@ Use this checklist for standard, deep, and submission-oriented polishing. Report
 - [ ] Record requested output and revision visibility.
 - [ ] Inventory integrity anchors.
 - [ ] Inventory protected propositions that may be rewritten, merged, or relocated.
+- [ ] For equation-bearing DOCX, inventory OMML, embedded objects, drawings, numbers, fields, bookmarks, references, and equation paragraph styles.
 - [ ] Identify missing context that makes a requested rewrite unsafe.
 
 ## Structure and Argument
@@ -62,6 +63,22 @@ Use this checklist for standard, deep, and submission-oriented polishing. Report
 - [ ] Funding, ethics, conflicts, data, authorship, and affiliations remain factual.
 - [ ] Every unresolved integrity issue appears in the author-query list.
 
+## Word Equations
+
+- [ ] Every displayed equation and material inline formula has a necessary technical function, appropriate placement, and a prose introduction or definition where needed.
+- [ ] Operators, signs, term order, scripts, limits, conditions, dimensions, and symbol meanings match the protected source.
+- [ ] Native OMML remains native and editable; OLE or MathType candidates and their embedded parts remain intact unless conversion was explicitly authorized.
+- [ ] No equation was silently flattened to plain text or replaced with a drawing or image.
+- [ ] Equation-bearing paragraphs were edited at node or run level rather than rebuilt from whole-paragraph text.
+- [ ] Inline or displayed treatment, numbering scope, parentheses, typography, punctuation, and symbol definitions follow a verified rule or the manuscript's consistent convention.
+- [ ] Displayed formulas use a verified equation style or real tab stops; repeated spaces are not used for centering or number alignment.
+- [ ] Long formulas break at logical points and remain legible at the actual column width; stacked content is not clipped by fixed line spacing.
+- [ ] Visible numbers are unique and follow the verified sequence; `SEQ`, bookmarks, `REF`, and visible references are synchronized.
+- [ ] Before-and-after structural audits account for native math, embedded objects, numbers, fields, bookmarks, and intentional formula changes.
+- [ ] Every formula page was inspected after rendering, and the final repaginated document was inspected page by page.
+- [ ] The renderer had the required fonts and compatible equation support; alternate-renderer missing glyphs or layout changes were not mistaken for source defects.
+- [ ] Desktop Word fields were updated before final rendering, or the unavailable step is reported explicitly.
+
 ## Journal Compliance
 
 - [ ] The journal profile cites current official sources and access dates.
@@ -76,7 +93,7 @@ Use this checklist for standard, deep, and submission-oriented polishing. Report
 
 ## File Validation
 
-- [ ] `.docx` styles, fields, equations, comments, footnotes, and revision state are preserved.
+- [ ] `.docx` styles, fields, bookmarks, equations, embedded parts, comments, footnotes, relationships, and revision state are preserved.
 - [ ] `.tex` commands, labels, citations, and macros remain valid.
 - [ ] Markdown tables, links, citations, and code blocks remain intact.
 - [ ] PDF-only limitations are reported.
@@ -128,6 +145,16 @@ Use this checklist for standard, deep, and submission-oriented polishing. Report
 - 新增或删除的引用：
 - 移动、合并或删除的受保护命题：
 - 数据、公式或结论风险：
+
+## Word 公式核对
+
+- 原生 OMML / 嵌入对象 / 图片候选：
+- 编号、书签与交叉引用：
+- 有意修改的公式及依据：
+- 结构比较结果：
+- 逐页渲染结果：
+- Word 字段更新：已执行 / 未执行（原因）
+- 待作者确认：
 
 ## 执行检查
 

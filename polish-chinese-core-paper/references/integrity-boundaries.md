@@ -9,7 +9,9 @@ Record the anchors that appear in the input before polishing:
 | Anchor | Preserve | Check after editing |
 |---|---|---|
 | Numerical evidence | Values, signs, ranges, units, uncertainty, sample sizes, dates | Every number remains attached to the same object and condition |
-| Technical objects | Equations, symbols, method names, datasets, metrics, model variants | Names and definitions remain consistent |
+| Mathematical semantics | Operators, signs, term order, scripts, limits, conditions, symbols, dimensions | Mathematical structure and symbol meaning remain unchanged unless evidence proves a correction |
+| Technical objects | Method names, datasets, metrics, model variants, algorithms, code identifiers | Names, definitions, and references remain consistent |
+| Word equation links | OMML or OLE object type, equation order, visible number, `SEQ`/`REF` fields, bookmarks | No object is flattened and every number and reference still resolves |
 | Citations | Citation keys, author-year pairs, quotation boundaries, source attribution | No citation is added, removed, moved, or repurposed without explanation |
 | Logical scope | Population, dataset, scenario, baseline, assumptions, exceptions | Generality is not broadened by smoother wording |
 | Claim strength | Observation, association, explanation, prediction, causation, proof | The revised claim stays at the same or a weaker justified level |
@@ -48,7 +50,10 @@ Treat these edits as high risk:
 - changing “在所比较方法中最优” to “达到最优水平”;
 - changing “可用于” to “能够解决”;
 - deleting a limitation, boundary condition, or negative result, or relocating it so that its effect on interpretation becomes obscure;
-- turning a hypothesis or future direction into a completed contribution.
+- turning a hypothesis or future direction into a completed contribution;
+- changing an equation's operator, sign, operand order, subscript or superscript attachment, limit, condition, dimension, or symbol meaning;
+- deleting or relocating a formula when the change removes a necessary reasoning step or alters argumentative emphasis;
+- converting an editable Word equation into plain text or an image, or detaching its number, bookmark, or cross-reference.
 
 ## Numbers and Statistical Language
 
@@ -90,11 +95,12 @@ Perform these checks after polishing:
 
 1. Compare all original and revised numerical tokens, including numbers inside captions and notes.
 2. Compare citation identifiers and their sentence-level attachment.
-3. Compare equation, figure, table, and section references.
-4. Trace every protected proposition from its source location to its revised location.
-5. Re-read every change containing causal verbs, superlatives, novelty claims, limitations, negative results, or generalizations.
-6. Confirm that no paragraph now claims evidence from a different experiment, sample, baseline, or source.
-7. Confirm that no necessary proposition became misleadingly prominent or obscure solely because of its new position.
-8. List any anchor that could not be checked because the source data or reference was unavailable.
+3. Compare equation semantics and order, then compare equation, figure, table, and section references.
+4. For DOCX, compare native-math signatures, embedded-object hashes, visible numbers, `SEQ`/`REF` fields, and bookmarks; separately inspect rendered formula pages.
+5. Trace every protected proposition from its source location to its revised location.
+6. Re-read every change containing causal verbs, superlatives, novelty claims, limitations, negative results, or generalizations.
+7. Confirm that no paragraph now claims evidence from a different experiment, sample, baseline, or source.
+8. Confirm that no necessary proposition became misleadingly prominent or obscure solely because of its new position.
+9. List any anchor that could not be checked because the source data or reference was unavailable.
 
 Report completion honestly: “anchors compared with the supplied manuscript” is valid; “facts verified” is not valid unless independent evidence was actually checked.

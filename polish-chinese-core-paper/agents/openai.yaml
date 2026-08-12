@@ -1,4 +1,4 @@
 interface:
   display_name: "中文核心论文润色"
-  short_description: "逐句审查中文核心论文的必要性、位置、表达与证据边界"
-  default_prompt: "Use $polish-chinese-core-paper to substantively edit this Chinese manuscript, auditing every sentence for necessity, placement, evidence, and academic style while preserving factual meaning."
+  short_description: "逐句取舍、证据边界与 Word 原生公式排版审校"
+  default_prompt: "Use $polish-chinese-core-paper to substantively edit this Chinese manuscript, auditing sentence necessity and evidence while preserving and verifying native Word equations, numbering, and cross-references."
