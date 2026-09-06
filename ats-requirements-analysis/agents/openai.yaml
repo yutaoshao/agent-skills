@@ -1,0 +1,4 @@
+interface:
+  display_name: "ATS Requirements Analysis"
+  short_description: "Turn ATS notes into decision-ready product requirements"
+  default_prompt: "Use $ats-requirements-analysis to turn ATS feedback, meeting notes, transcripts, or existing specs into evidence-backed requirements, scope, terminology, and decision questions."

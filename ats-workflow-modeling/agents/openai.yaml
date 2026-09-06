@@ -1,0 +1,4 @@
+interface:
+  display_name: "ATS Workflow Modeling"
+  short_description: "Model ATS stages, roles, permissions, and recovery paths"
+  default_prompt: "Use $ats-workflow-modeling to model the ATS stages, state transitions, role permissions, integrations, and exception paths from the supplied requirements."

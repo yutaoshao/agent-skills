@@ -1,0 +1,4 @@
+interface:
+  display_name: "ATS Product Review"
+  short_description: "Review ATS product logic, scope, permissions, and readiness"
+  default_prompt: "Use $ats-product-review to review ATS requirements, workflow, permissions, test plans, or feedback for contradictions, missing decisions, MVP risk, and acceptance readiness."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "ATS UAT Testing"
+  short_description: "Design ATS acceptance, exploratory, and regression tests"
+  default_prompt: "Use $ats-uat-testing to design or run evidence-based ATS acceptance, exploratory, role-permission, integration, and regression tests."
