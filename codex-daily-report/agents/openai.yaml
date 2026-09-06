@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex 日报"
+  short_description: "从当天 Codex 对话提炼简洁可信的中文工作日报"
+  default_prompt: "使用 $codex-daily-report 根据今天的 Codex 对话生成符合我既有规范的简洁日报。"
