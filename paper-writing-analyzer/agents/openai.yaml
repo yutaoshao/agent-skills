@@ -1,0 +1,4 @@
+interface:
+  display_name: "中文论文写作拆解"
+  short_description: "逐篇拆解中文理工科论文的句式、段落与论证，多篇归纳并生成 AI 写作指南"
+  default_prompt: "使用 $paper-writing-analyzer 拆解我提供的中文论文；逐篇分析句式、段落和论证，有多篇时比较共性与差异，生成完整拆解和可独立使用的 AI 写作指南。"
