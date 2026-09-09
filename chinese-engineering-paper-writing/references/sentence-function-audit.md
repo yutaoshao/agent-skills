@@ -28,7 +28,7 @@ Do not use reader comfort, favorable appearance, or narrative smoothness as grou
 
 ## Audit Units
 
-- Audit every prose sentence in `standard` and `deep` work.
+- When this module is selected for sentence-by-sentence review, content allocation, or deep editing, audit every prose sentence within the agreed scope. Ordinary drafting and rewriting do not automatically invoke a full-manuscript audit.
 - Treat a proposition-bearing heading, list item, caption, table note, footnote, or callout as a sentence-equivalent unit.
 - Audit distinct propositions separately when one grammatical sentence contains multiple claims with different evidence or functions.
 - Treat displayed equations and material inline formulas as technical units: audit their function, necessity, placement, definition, and later use while preserving their mathematical semantics. For Word files, apply `word-equation-typesetting.md`; do not rewrite mathematics as part of a prose-only edit.
@@ -71,7 +71,7 @@ Assign one primary disposition to each audited unit. Record a linked secondary a
 | `delete` | The unit contains no unique necessary information or valid rhetorical function | Confirm that no protected proposition, citation role, or logical step disappears |
 | `query` | Necessity, evidence, intended emphasis, or authorial meaning cannot be resolved | Keep a provisional version and state the decision needed |
 
-In `light`, flag content-bearing `move`, `delete`, and `query` decisions without applying them silently. In `standard`, apply only low-risk dispositions whose informational content and argumentative emphasis remain intact, and log every nonlocal change. In `deep`, show high-risk dispositions as explicit proposals and request confirmation where required by the integrity rules.
+For review-only requests, present dispositions as suggestions. For authorized editing, apply supported rewrites, merges, moves, and removal of redundant wording while preserving necessary information and appropriate emphasis. Explain material changes; keep unresolved factual or mathematical choices provisional under [integrity-boundaries.md](integrity-boundaries.md).
 
 Use stable identifiers such as `E-001` for audited equations. A formula can receive a disposition, but changing its operators, operands, signs, scripts, conditions, or symbol meanings is a mathematical-content edit rather than a language rewrite and requires an explicit evidence trail and author confirmation when unresolved.
 
@@ -112,13 +112,13 @@ Give a proposition one primary home. Repeat it only when a second location serve
 
 ## Working Ledger and Verification
 
-Keep this ledger in task-local working notes for `standard` and `deep` work:
+For an exhaustive audit, keep this ledger in task-local working notes:
 
 | ID | Original location | Function | Evidence or anchor | Necessity result | Placement and emphasis | Disposition | Reason or query |
 |---|---|---|---|---|---|---|---|
 | S-001 | | | | necessary / mergeable / unnecessary / uncertain | appropriate / move / rebalance | keep / rewrite / merge / move / delete / query | |
 
-For a long manuscript, complete the ledger section by section. Do not use sampling as a substitute for an exhaustive audit when the requested level is `standard` or `deep`.
+For a long manuscript, complete the ledger section by section. Do not use sampling as a substitute for an exhaustive audit when an exhaustive audit is requested.
 
 Verify in both directions:
 
@@ -129,7 +129,7 @@ Verify in both directions:
 5. **Emphasis check**: Inspect high-emphasis positions for disproportionate caveats, secondary detail, unsupported novelty, or hidden boundaries.
 6. **Formal-unit check**: Confirm that every retained equation performs a necessary technical function, is introduced and used, and remains semantically and structurally traceable.
 
-Deliver the complete ledger only when the user requests it. Otherwise report changed, deleted, moved, high-risk, and unresolved units with concise reasons.
+Deliver the complete ledger only when the user requests it. Otherwise summarize material editorial changes and unresolved units with concise reasons; do not list every routine rewrite.
 
 ## Worked Case
 

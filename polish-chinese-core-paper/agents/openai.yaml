@@ -1,4 +1,0 @@
-interface:
-  display_name: "中文核心论文润色"
-  short_description: "逐句取舍、证据边界与 Word 原生公式排版审校"
-  default_prompt: "Use $polish-chinese-core-paper to substantively edit this Chinese manuscript, auditing sentence necessity and evidence while preserving and verifying native Word equations, numbering, and cross-references."

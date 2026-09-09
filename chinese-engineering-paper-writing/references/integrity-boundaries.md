@@ -1,6 +1,6 @@
 # Integrity Boundaries
 
-Use these rules before and after every manuscript edit. Treat fluent prose as secondary to factual and argumentative integrity.
+Use these rules before and after editing an existing manuscript. Apply comparisons to the affected scope; ordinary rewriting does not require an exhaustive sentence ledger. Preserve facts while making the research contribution clear.
 
 ## Protected Anchors
 
@@ -29,7 +29,7 @@ Protect different anchors at the appropriate level:
 - Do not interpret “preserve” as “retain the original sentence in the original section.” A factually correct sentence may still be redundant, misplaced, or rhetorically disproportionate.
 - Do not interpret relocation as permission to hide an unfavorable result or material limitation. Keep it where the intended reader can evaluate its effect on the claim.
 
-Assign a stable identifier to a protected proposition before moving or merging it, then record its revised location in the sentence audit.
+For an exhaustive sentence audit, assign identifiers to moved or merged protected propositions and record their revised locations. For ordinary rewriting, a concise record of material changes is sufficient.
 
 ## Claim-Strength Ladder
 
@@ -41,7 +41,7 @@ Keep claims on their supported rung:
 4. **Prediction or effect under stated conditions**: “在……条件下提高”“对……具有预测作用”
 5. **Causation or proof**: “导致”“决定”“证实了机制”“证明”
 
-Never move upward merely to make a sentence sound decisive. Preserve qualifiers such as “可能”“在一定条件下”“对所比较方法而言”“在本数据集上”. Remove a qualifier only when the evidence and author explicitly support doing so.
+Never move upward merely to make a sentence sound decisive. Preserve qualifiers such as “可能”“在一定条件下”“对所比较方法而言”“在本数据集上”. Remove an empty hedge when doing so preserves the supported claim; retain or accurately restate any qualifier that carries real uncertainty or scope.
 
 Treat these edits as high risk:
 
@@ -74,20 +74,13 @@ Treat these edits as high risk:
 - Do not move a citation across sentences when the move changes which proposition it appears to support.
 - Do not add citations solely to meet an assumed reference-count target.
 
-## Author Confirmation Boundaries
+## Editing Authority and Unresolved Facts
 
-Apply local grammar, punctuation, and unambiguous redundancy fixes without confirmation when they preserve meaning. Mark or request confirmation before:
+Use the user's authorized scope. A request to rewrite or deeply edit authorizes restructuring, merging, deleting redundant wording, and moving supported propositions while preserving their meaning and adequate visibility. Do not request separate approval for each routine editorial decision.
 
-- changing a research question, hypothesis, contribution, limitation, or conclusion;
-- merging claims supported by different evidence;
-- deleting content that may carry disciplinary or legal significance;
-- reordering paragraphs in a way that changes argumentative emphasis;
-- moving a protected proposition between high- and low-emphasis locations when the move changes how readers assess the main claim;
-- replacing a technical term with a near-synonym;
-- changing an ambiguous numerical or citation statement;
-- adding any factual content not present in the supplied sources.
+When a change would require choosing between conflicting data, assigning a new technical meaning, changing a research conclusion, or supplying an unverified fact, identify the specific ambiguity and provide a provisional replacement or author query. Continue independent edits. Explicit authorization to edit does not supply missing evidence.
 
-In `deep` mode, provide a proposed revision and the reasoning, but keep unresolved substantive changes visibly provisional.
+Explain material mathematical corrections and the supplied evidence supporting them. If the mathematics or consequences cannot be established, preserve the original and surface the question rather than silently making a correction.
 
 ## Post-Edit Comparison
 

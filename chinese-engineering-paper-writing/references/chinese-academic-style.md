@@ -28,42 +28,7 @@ Do not trade a precise technical expression for a shorter but broader synonym. D
 
 ## Section-Level Guidance
 
-### Title
-
-- Identify the research object, problem, method, or scope that distinguishes the paper.
-- Remove evaluative adjectives that the manuscript does not establish.
-- Avoid stacked generic nouns such as “分析、研究与应用” unless each denotes real content.
-- Follow target-journal rules for title length, subtitles, abbreviations, and English translation.
-
-### Abstract
-
-- Derive the final abstract from the polished body.
-- Present purpose, method, principal evidence, and conclusion when the article type and journal call for them.
-- Keep conditions and comparison scope attached to reported results.
-- Avoid background that does not help interpret the research problem.
-- State the evaluation setting directly. Do not force every limitation into the abstract, but include a limitation when omitting it would materially distort the principal finding.
-- Preserve numbers exactly and do not add a “representative” result from memory.
-- Follow verified rules for length, person, abbreviations, citations, and structured headings.
-
-### Introduction and Related Work
-
-- Move from the concrete problem to the unresolved gap, not from broad slogans to a predetermined solution.
-- Synthesize literature by question, method, evidence, or disagreement rather than listing authors chronologically.
-- Distinguish what prior work did from the manuscript author's evaluation of it.
-- Make the proposed contribution answer the stated gap.
-
-### Methods, Results, and Discussion
-
-- Keep procedures chronological when execution order matters and causal only when causation is established.
-- Describe results before interpretation when the distinction prevents overclaiming.
-- Attach comparisons to baselines and conditions.
-- Use discussion to explain implications, contradictions, boundaries, and relation to prior work; do not repeat the results section sentence by sentence.
-
-### Conclusion
-
-- Answer the research question at the level supported by the evidence.
-- Retain limitations that constrain interpretation.
-- Avoid copying the abstract or listing generic future directions.
+Use the relevant chapter cards in [writing-guide.md](writing-guide.md) for title, abstract, introduction, methods, results, and conclusion. This reference focuses on sentence and paragraph expression; it does not impose a second section template.
 
 ## Paragraph Construction
 
@@ -93,7 +58,7 @@ Test paragraph flow by asking:
 - Rebalance wording or position when a secondary point receives more emphasis than the main claim, or when a material boundary is too obscure.
 - Judge necessity in context. Do not delete limitations or negative results merely because they are unfavorable.
 
-Use `sentence-function-audit.md` for an exhaustive `standard` or `deep` review.
+Use [sentence-function-audit.md](sentence-function-audit.md) when the user requests sentence-by-sentence review, content allocation, or deep editing.
 
 ### Make the Actor and Object Clear
 

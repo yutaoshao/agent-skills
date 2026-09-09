@@ -1,0 +1,4 @@
+interface:
+  display_name: "中文工程论文写作"
+  short_description: "以问题、机制与证据组织中文工程论文，按需逐句编辑、保护 Word 公式并核对期刊规范"
+  default_prompt: "使用 $chinese-engineering-paper-writing 根据我提供的研究材料起草或优化中文论文，选定研究主线，建立问题、措施与证据的对应关系，再产出所需正文。"

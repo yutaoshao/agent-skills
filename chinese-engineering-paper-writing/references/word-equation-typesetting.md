@@ -21,8 +21,8 @@ Use this protocol whenever a Chinese academic manuscript in `.docx` contains equ
 
 Apply requirements in this order:
 
-1. the current official target-journal template and author instructions;
-2. explicit user instructions for the manuscript;
+1. explicit user instructions for the manuscript;
+2. the current official target-journal template and author instructions (report any user-requested departure when compliance is in scope);
 3. the manuscript's internally consistent, dominant convention;
 4. the fallback guidance in this file.
 
@@ -30,7 +30,7 @@ Treat formats observed in published papers as `observed`, not `hard`, unless the
 
 ## Equation-Level Editorial Audit
 
-An equation is a proposition-bearing technical unit, not an automatically protected ornament. In `standard` and `deep`, audit every displayed equation and each material inline formula:
+An equation is a proposition-bearing technical unit, not an automatically protected ornament. For requested equation-necessity review or deep content editing, audit every displayed equation and each material inline formula in scope. For prose-only DOCX editing, preserve and verify the equation objects without requiring a full necessity review:
 
 | Gate | Required question |
 |---|---|
@@ -43,7 +43,7 @@ An equation is a proposition-bearing technical unit, not an automatically protec
 
 Do not retain an equation merely because it is mathematically valid. A repeated definition, unused intermediate step, or decorative restatement may be unnecessary. Conversely, never delete or compress a formula when that would remove a reproducibility-critical definition, condition, or derivation step.
 
-Assign `keep`, `rewrite`, `merge`, `move`, `delete`, or `query` as with prose, but treat a change to mathematical content, a formula deletion, or a formula relocation that changes argumentative emphasis as high risk. Propose it and obtain author confirmation unless the supplied evidence makes the correction and its consequences unambiguous.
+Assign `keep`, `rewrite`, `merge`, `move`, `delete`, or `query` as with prose, but treat a change to mathematical content, a formula deletion, or a formula relocation that changes argumentative emphasis as high risk. Apply restructuring within the user-authorized scope while preserving the technical content and its necessary role. Explain material changes; if mathematical meaning or consequences are unresolved, propose the change and ask for the missing evidence instead of silently applying it.
 
 ## Pre-Edit Inventory
 
@@ -188,7 +188,7 @@ Verification has two independent gates.
 - check visible numbers for duplication and, when applicable, sequence;
 - check `SEQ` and `REF` instructions, bookmarks, and dangling references;
 - search native math text for leaked TeX commands or delimiters;
-- confirm that intentionally changed formulas are listed and author-approved.
+- confirm that intentionally changed formulas are listed, supported by evidence, and within the user-authorized scope.
 
 ### Visual gate
 
