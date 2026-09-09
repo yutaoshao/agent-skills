@@ -28,7 +28,7 @@ agent-skills/
 │   ├── SKILL.md             # 按需选择起草、核验、编译和返修
 │   ├── modules/             # 独立任务模块
 │   └── references/          # 英文表达、文献与投稿指南
-├── paper-writing-analyzer/  # 中文论文写作拆解
+├── paper-exemplar-analysis/  # 论文范文拆解
 │   ├── SKILL.md             # 单篇拆解、多篇归纳与独立写作指南
 │   └── references/          # 拆解规范与输出模板
 ├── chinese-engineering-paper-writing/ # 中文工程论文写作与编辑
@@ -87,7 +87,7 @@ agent-skills/
 |--------|------|-----|--------|
 | [glm-skills](./glm-skills/) | 智谱 GLM AI 能力集合 | z-ai-web-dev-sdk | 12 |
 | [paper-writer](./paper-writer/) | 英文 CS/ML 论文起草、文献与图表核验、LaTeX 投稿和返修 | - | 10 |
-| [paper-writing-analyzer](./paper-writing-analyzer/) | 中文论文逐句、逐段与论证拆解，多篇比较并生成独立 AI 写作指南 | - | 2 |
+| [paper-exemplar-analysis](./paper-exemplar-analysis/) | 中文论文逐句、逐段与论证拆解，多篇比较并生成独立 AI 写作指南 | - | 2 |
 | [chinese-engineering-paper-writing](./chinese-engineering-paper-writing/) | 中文工程论文起草与重写，按需逐句编辑、期刊核对与 Word 公式保护 | - | 按需 |
 | [project-analyzer](./project-analyzer/) | 证据化代码库上手与代表性使用路径追踪 | - | - |
 | [sync-context](./sync-context/) | 跨 Agent 上下文同步与交接协议 | - | 3 |
@@ -130,10 +130,12 @@ agent-skills/
 
 ### 学术写作
 - **paper-writer**: 面向英文 CS/ML 论文的起草与 LaTeX 投稿工作流；按任务选择研究材料提取、英文写作、文献核验、图表检查、编译、投稿和返修，无强制顺序阶段或计划日志。已吸收原 `paper-polish` 的有效检查能力。
-- **paper-writing-analyzer**: 精细拆解中文理工科论文的句式、段落与论证，逐篇完成后归纳共性、差异和适用条件；输出有来源依据的完整分析及可独立交给 AI 的写作指南，不迁移范文事实，不承担目标论文正文起草。
+- **paper-exemplar-analysis**: 精细拆解中文理工科论文的句式、段落与论证，逐篇完成后归纳共性、差异和适用条件；输出有来源依据的完整分析及可独立交给 AI 的写作指南，不迁移范文事实，不承担目标论文正文起草。
 - **chinese-engineering-paper-writing**: 以 25 篇中文机器人论文归纳的完整指南为写作主干，围绕问题—机制—证据组织起草、重写和润色；吸收原 `polish-chinese-core-paper` 的逐句编辑、事实保护、期刊核对与 Word 公式保真能力，按任务加载，不默认展开全文审计。
 
-论文相关技能现分为三个入口：写中文工程论文用 `chinese-engineering-paper-writing`，写英文 CS/ML 论文及处理 LaTeX 投稿用 `paper-writer`，学习范文写法用 `paper-writing-analyzer`。中文论文的配套英文摘要仍由中文入口处理。
+论文相关技能现分为三个入口：写中文工程论文用 `chinese-engineering-paper-writing`，写英文 CS/ML 论文及处理 LaTeX 投稿用 `paper-writer`，学习范文写法用 `paper-exemplar-analysis`。中文论文的配套英文摘要仍由中文入口处理。
+
+范文分析入口由 `paper-writing-analyzer` 更名为 `paper-exemplar-analysis`（论文范文拆解）；已有安装或项目符号链接需同步更新名称与目标路径。
 
 迁移旧安装时，用 `chinese-engineering-paper-writing` 替换 `polish-chinese-core-paper`，用更新后的 `paper-writer` 替换 `paper-polish`。更新已安装目录，并将旧入口移出各客户端的技能发现目录，避免继续重复触发；仅更新仓库不会自动替换其他位置的副本。旧公式脚本的相对路径保持为 `scripts/audit_word_equations.py`，技能根目录改为 `chinese-engineering-paper-writing/`。
 
@@ -161,7 +163,7 @@ agent-skills/
 
 ```text
 $skill-installer https://github.com/yutaoshao/agent-skills/tree/main/paper-writer
-$skill-installer https://github.com/yutaoshao/agent-skills/tree/main/paper-writing-analyzer
+$skill-installer https://github.com/yutaoshao/agent-skills/tree/main/paper-exemplar-analysis
 $skill-installer https://github.com/yutaoshao/agent-skills/tree/main/chinese-engineering-paper-writing
 $skill-installer https://github.com/yutaoshao/agent-skills/tree/main/adr-management
 $skill-installer https://github.com/yutaoshao/agent-skills/tree/main/codex-daily-report
@@ -180,7 +182,7 @@ $skill-installer https://github.com/yutaoshao/agent-skills/tree/main/ats-product
 git clone https://github.com/yutaoshao/agent-skills.git
 mkdir -p ~/.agents/skills
 cp -R agent-skills/paper-writer ~/.agents/skills/
-cp -R agent-skills/paper-writing-analyzer ~/.agents/skills/
+cp -R agent-skills/paper-exemplar-analysis ~/.agents/skills/
 cp -R agent-skills/chinese-engineering-paper-writing ~/.agents/skills/
 cp -R agent-skills/adr-management ~/.agents/skills/
 cp -R agent-skills/codex-daily-report ~/.agents/skills/
@@ -213,8 +215,8 @@ cp -R agent-skills/ats-product-review ~/.agents/skills/
 # 中文工程论文写作与编辑
 /plugin marketplace add yutaoshao/agent-skills/chinese-engineering-paper-writing
 
-# 中文论文写作拆解
-/plugin marketplace add yutaoshao/agent-skills/paper-writing-analyzer
+# 论文范文拆解
+/plugin marketplace add yutaoshao/agent-skills/paper-exemplar-analysis
 
 # 项目分析器
 /plugin marketplace add yutaoshao/agent-skills/project-analyzer
@@ -260,7 +262,7 @@ cp -R agent-skills/ats-product-review ~/.agents/skills/
 ```bash
 git clone https://github.com/yutaoshao/agent-skills.git
 cp -r agent-skills/paper-writer ~/.claude/skills/
-cp -r agent-skills/paper-writing-analyzer ~/.claude/skills/
+cp -r agent-skills/paper-exemplar-analysis ~/.claude/skills/
 cp -r agent-skills/chinese-engineering-paper-writing ~/.claude/skills/
 cp -r agent-skills/project-analyzer ~/.claude/skills/
 cp -r agent-skills/git-commit ~/.claude/skills/

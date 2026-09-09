@@ -28,7 +28,7 @@ agent-skills/
 │   ├── SKILL.md             # Task-scoped drafting, verification, build & revision
 │   ├── modules/             # Independent task modules
 │   └── references/          # English prose, citations & submission guidance
-├── paper-writing-analyzer/  # Chinese Paper Writing Analysis
+├── paper-exemplar-analysis/  # Paper Exemplar Analysis
 │   ├── SKILL.md             # Source analysis to standalone writing guides
 │   └── references/          # Analysis protocol and output templates
 ├── chinese-engineering-paper-writing/ # Chinese Engineering Writing & Editing
@@ -87,7 +87,7 @@ agent-skills/
 |---------|-------------|-----|---------|
 | [glm-skills](./glm-skills/) | GLM AI capabilities collection | z-ai-web-dev-sdk | 12 |
 | [paper-writer](./paper-writer/) | English CS/ML drafting, citation and figure/table verification, LaTeX submission and revision | - | 10 |
-| [paper-writing-analyzer](./paper-writing-analyzer/) | Sentence, paragraph, and argument analysis of Chinese papers; cross-paper comparison and standalone AI writing guides | - | 2 |
+| [paper-exemplar-analysis](./paper-exemplar-analysis/) | Sentence, paragraph, and argument analysis of Chinese papers; cross-paper comparison and standalone AI writing guides | - | 2 |
 | [chinese-engineering-paper-writing](./chinese-engineering-paper-writing/) | Chinese engineering drafting and rewriting with optional sentence review, journal checks, and Word equation protection | - | On demand |
 | [project-analyzer](./project-analyzer/) | Evidence-led codebase onboarding and journey tracing | - | - |
 | [sync-context](./sync-context/) | Cross-agent context sync & handoff protocol | - | 3 |
@@ -130,10 +130,12 @@ agent-skills/
 
 ### Academic Writing
 - **paper-writer**: English CS/ML drafting and LaTeX submission: select research-material extraction, writing, citation verification, figure/table checks, compilation, submission, or revision as needed. No mandatory sequential stages or planning logs. Incorporates the useful checks from the former `paper-polish`.
-- **paper-writing-analyzer**: Analyze Chinese engineering papers sentence by sentence, trace paragraph and argument structure, compare patterns across papers with source counts and applicability conditions, and produce standalone AI writing guides without transferring source-paper facts or drafting the target paper.
+- **paper-exemplar-analysis**: Analyze Chinese engineering papers sentence by sentence, trace paragraph and argument structure, compare patterns across papers with source counts and applicability conditions, and produce standalone AI writing guides without transferring source-paper facts or drafting the target paper.
 - **chinese-engineering-paper-writing**: Uses the complete guide distilled from 25 Chinese robotics papers to connect problems, mechanisms, and evidence. Incorporates sentence editing, factual integrity, journal checks, and Word equation preservation from the former `polish-chinese-core-paper`, loaded by task rather than as a default full audit.
 
-Use `chinese-engineering-paper-writing` for Chinese engineering manuscripts (including their companion English abstracts), `paper-writer` for standalone English CS/ML papers and LaTeX submission work, and `paper-writing-analyzer` to learn writing patterns from source papers.
+Use `chinese-engineering-paper-writing` for Chinese engineering manuscripts (including their companion English abstracts), `paper-writer` for standalone English CS/ML papers and LaTeX submission work, and `paper-exemplar-analysis` to learn writing patterns from source papers.
+
+The exemplar-analysis skill was renamed from `paper-writing-analyzer` to `paper-exemplar-analysis`; update existing installations or project symlinks to the new name and target path.
 
 To migrate existing installations, replace `polish-chinese-core-paper` with `chinese-engineering-paper-writing` and `paper-polish` with the updated `paper-writer`. Update installed copies and move retired entrypoints out of each client's skill discovery directory to avoid overlapping triggers; updating this repository alone does not replace external copies. The equation script retains its relative path, `scripts/audit_word_equations.py`, under the new `chinese-engineering-paper-writing/` root.
 
@@ -161,7 +163,7 @@ Use Codex's built-in `$skill-installer` to install an individual skill directly 
 
 ```text
 $skill-installer https://github.com/yutaoshao/agent-skills/tree/main/paper-writer
-$skill-installer https://github.com/yutaoshao/agent-skills/tree/main/paper-writing-analyzer
+$skill-installer https://github.com/yutaoshao/agent-skills/tree/main/paper-exemplar-analysis
 $skill-installer https://github.com/yutaoshao/agent-skills/tree/main/chinese-engineering-paper-writing
 $skill-installer https://github.com/yutaoshao/agent-skills/tree/main/adr-management
 $skill-installer https://github.com/yutaoshao/agent-skills/tree/main/codex-daily-report
@@ -180,7 +182,7 @@ For a manual user-scoped installation, clone the repository and copy the desired
 git clone https://github.com/yutaoshao/agent-skills.git
 mkdir -p ~/.agents/skills
 cp -R agent-skills/paper-writer ~/.agents/skills/
-cp -R agent-skills/paper-writing-analyzer ~/.agents/skills/
+cp -R agent-skills/paper-exemplar-analysis ~/.agents/skills/
 cp -R agent-skills/chinese-engineering-paper-writing ~/.agents/skills/
 cp -R agent-skills/adr-management ~/.agents/skills/
 cp -R agent-skills/codex-daily-report ~/.agents/skills/
@@ -213,8 +215,8 @@ Or install individual skills:
 # Chinese Engineering Writing and Editing
 /plugin marketplace add yutaoshao/agent-skills/chinese-engineering-paper-writing
 
-# Chinese Paper Writing Analysis
-/plugin marketplace add yutaoshao/agent-skills/paper-writing-analyzer
+# Paper Exemplar Analysis
+/plugin marketplace add yutaoshao/agent-skills/paper-exemplar-analysis
 
 # Project Analyzer
 /plugin marketplace add yutaoshao/agent-skills/project-analyzer
@@ -260,7 +262,7 @@ Clone the repository and copy the desired skill to your Claude skills directory:
 ```bash
 git clone https://github.com/yutaoshao/agent-skills.git
 cp -r agent-skills/paper-writer ~/.claude/skills/
-cp -r agent-skills/paper-writing-analyzer ~/.claude/skills/
+cp -r agent-skills/paper-exemplar-analysis ~/.claude/skills/
 cp -r agent-skills/chinese-engineering-paper-writing ~/.claude/skills/
 cp -r agent-skills/project-analyzer ~/.claude/skills/
 cp -r agent-skills/git-commit ~/.claude/skills/
