@@ -91,7 +91,7 @@ agent-skills/
 | [chinese-engineering-paper-writing](./chinese-engineering-paper-writing/) | 中文工程论文起草与重写，按需逐句编辑、期刊核对与 Word 公式保护 | - | 按需 |
 | [project-analyzer](./project-analyzer/) | 证据化代码库上手与代表性使用路径追踪 | - | - |
 | [sync-context](./sync-context/) | 跨 Agent 上下文同步与交接协议 | - | 3 |
-| [git-commit](./git-commit/) | Git 暂存、详细 conventional commit 与安全本地合并回主分支工作流 | - | 6 |
+| [git-commit](./git-commit/) | Git 暂存、详细 conventional commit 与支持多 worktree 的安全本地合并回主分支 | - | 6 |
 | [how-to-read-a-book](./how-to-read-a-book/) | 面向书籍、论文与长文的主动阅读工作流 | - | 4 |
 | [module-diagram-planner](./module-diagram-planner/) | 面向功能模块理解的图谱选择与规划 | - | 2 |
 | [adr-management](./adr-management/) | 创建、评审、校验和替代 ADR，并与 Trellis 联动 | - | 3 |

@@ -123,6 +123,7 @@ def main() -> int:
     try:
         repo = resolve_repo(args.repo)
         branch = run_git(repo, ["branch", "--show-current"]) or "(detached HEAD)"
+        worktrees = to_lines(run_git(repo, ["worktree", "list", "--porcelain"]))
         porcelain = run_git(repo, ["status", "--short"])
         status_lines, staged, unstaged, untracked = parse_porcelain(porcelain)
         staged_names = to_lines(run_git(repo, ["diff", "--cached", "--name-status"]))
@@ -140,6 +141,7 @@ def main() -> int:
     print(f"branch: {branch}")
     print()
     print_section("Working Tree Status", status_lines)
+    print_section("Worktree Inventory (read-only; recheck before merge)", worktrees)
     print_section("Staged Files", staged)
     print_section("Unstaged Files", unstaged)
     print_section("Untracked Files", untracked)

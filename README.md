@@ -91,7 +91,7 @@ agent-skills/
 | [chinese-engineering-paper-writing](./chinese-engineering-paper-writing/) | Chinese engineering drafting and rewriting with optional sentence review, journal checks, and Word equation protection | - | On demand |
 | [project-analyzer](./project-analyzer/) | Evidence-led codebase onboarding and journey tracing | - | - |
 | [sync-context](./sync-context/) | Cross-agent context sync & handoff protocol | - | 3 |
-| [git-commit](./git-commit/) | Git staging, detailed conventional commits, and safe local merge-back workflow | - | 6 |
+| [git-commit](./git-commit/) | Git staging, detailed conventional commits, and safe worktree-aware local merge-back | - | 6 |
 | [how-to-read-a-book](./how-to-read-a-book/) | Active reading workflows for books, papers, and long-form texts | - | 4 |
 | [module-diagram-planner](./module-diagram-planner/) | Diagram planning for feature and module understanding | - | 2 |
 | [adr-management](./adr-management/) | Create, review, validate, and supersede ADRs with Trellis links | - | 3 |
