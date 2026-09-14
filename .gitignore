@@ -12,3 +12,4 @@
 /hr-candidate-report/
 /.agents/
 /.claude/
+.DS_Store
